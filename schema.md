@@ -42,6 +42,14 @@ const articles = {
       type: String,
       required: true
     },
+    snippet: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: Text,
+      required: true
+    }
     url: {
       type: String,
       required: true
@@ -54,6 +62,10 @@ const articles = {
       type: [],
       required: true
     },
+    timestamp: {
+      type: String,
+      required: true
+    }
     contributors: {
       contributor1: {
         username: {
