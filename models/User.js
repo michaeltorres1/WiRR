@@ -1,5 +1,5 @@
 // Author:       Michael Torres
-// Filename:     db.js
+// Filename:     User.js
 // Description:  The purpose of this file is to create a User model
 
 const mongoose = require('mongoose');

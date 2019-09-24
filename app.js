@@ -1,3 +1,7 @@
+// Author:       Michael Torres
+// Filename:     app.js
+// Description:  The purpose of this file is to serve as the main entry file
+
 const express = require('express');
 const connectDB = require('./config/db');
 
