@@ -11,11 +11,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
-// @route     POST api/users
+// @route     POST api/users/register
 // @desc      Register user
 // @access    Public
 router.post(
-  '/',
+  '/register',
   [
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'A valid email is required').isEmail(),

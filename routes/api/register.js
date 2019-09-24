@@ -4,17 +4,17 @@
 
 const express = require('express');
 const router = express.Router();
-const register = require('../../middleware/register');
+const auth = require('../../middleware/auth');
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
-// @route     GET api/auth
-// @desc      Auth route
+// @route     GET api/users/register
+// @desc      Register a user route
 // @access    Public
-router.get('/register', register, async (req, res) => {
+router.get('/auth', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
@@ -28,7 +28,7 @@ router.get('/register', register, async (req, res) => {
 // @desc      Authenticate user & get token
 // @access    Public
 router.post(
-  '/',
+  '/login',
   [
     check('email', 'A valid email is required').isEmail(),
     check('password', 'Password field cannot be empty').exists()
