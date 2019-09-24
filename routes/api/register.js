@@ -1,10 +1,10 @@
 // Author:       Michael Torres
-// Filename:     auth.js
-// Description:  The purpose of this file is to route to the auth route
+// Filename:     register.js
+// Description:  The purpose of this file is to route to the register route
 
 const express = require('express');
 const router = express.Router();
-const auth = require('../../middleware/auth');
+const register = require('../../middleware/register');
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -14,7 +14,7 @@ const bcrypt = require('bcryptjs');
 // @route     GET api/auth
 // @desc      Auth route
 // @access    Public
-router.get('/', auth, async (req, res) => {
+router.get('/register', register, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
