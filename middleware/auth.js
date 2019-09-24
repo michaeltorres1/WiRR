@@ -1,3 +1,8 @@
+// Author:       Michael Torres
+// Filename:     auth.js
+// Description:  The purpose of this file is to validate the token for the
+//               current logged in user
+
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
@@ -12,8 +17,8 @@ module.exports = function(req, res, next) {
 
   // if there is a token
   try {
-    const decoded = jwt.verify(token, config.get('secretOrKey'));
-    req.user = decoded.user;
+    const decodedToken = jwt.verify(token, config.get('secretOrKey'));
+    req.user = decodedToken.user;
     next();
   } catch (err) {
     res.status(401).json({ msg: 'Token is invalid!' });

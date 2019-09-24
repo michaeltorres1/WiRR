@@ -12,7 +12,7 @@ const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
 // @route     GET api/auth
-// @desc      Test route
+// @desc      Auth route
 // @access    Public
 router.get('/', auth, async (req, res) => {
   try {
