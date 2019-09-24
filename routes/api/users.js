@@ -1,3 +1,7 @@
+// Author:       Michael Torres
+// Filename:     users.js
+// Description:  The purpose of this file is to route to the users route
+
 const express = require('express');
 const router = express.Router();
 

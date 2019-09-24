@@ -1,3 +1,7 @@
+// Author:       Michael Torres
+// Filename:     auth.js
+// Description:  The purpose of this file is to route to the auth route
+
 const express = require('express');
 const router = express.Router();
 
