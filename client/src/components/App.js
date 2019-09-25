@@ -1,6 +1,7 @@
 import React from 'react';
 import { WikiUrlInput } from './wiki_url_input/wiki_url_input';
-import { Switch, Route, Link } from 'react-router-dom';
+import { WikiPageStats } from './wiki_page_stats/wiki_page_stats';
+import { Switch, Route } from 'react-router-dom';
 
 
 function App() {
@@ -10,6 +11,12 @@ function App() {
         path="/"
         component={WikiUrlInput}
       />
+
+      <Route 
+        path="/stats"
+        component={WikiPageStats}
+      />
+      
     </Switch>
   );
 }
