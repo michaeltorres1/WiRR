@@ -22,16 +22,13 @@ export class WikiUrlInput extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        debugger
         visitPage(this.state.searchInput)
     }
 
     render() {
         return (
             <div>
-                <form
-                    onSubmit={this.handleSubmit}>
-
+                <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
                         className="wiki-eval-input"
@@ -57,17 +54,10 @@ let URL = require('url-parse')
 // used to parse URLs
 
 function visitPage(pageUrl) {
-    debugger
     request(pageUrl, (error, response, body) => {
-        response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-        debugger
         if (error) {
-            debugger
             throw (error)
         }
-
-        debugger
-
 
         if (response.statusCode === 200) {
             const $ = cheerio.load(body)
