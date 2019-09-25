@@ -1,10 +1,15 @@
 import React from 'react';
-import { WikiUrlInput } from './wiki_url_input/wiki_url_input';
+import '../App.css';
+// import { WikiUrlInput } from './wiki_url_input/wiki_url_input';
+import Navbar from './layout/navbar';
+import Landing from './layout/landing';
 
 function App() {
   return (
     <div>
-      <WikiUrlInput />
+      <Navbar />
+      <Landing />
+      {/* <WikiUrlInput /> */}
     </div>
   );
 }
