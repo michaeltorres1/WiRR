@@ -19,9 +19,14 @@ export class WikiUrlInput extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            searchInput: ''
+            searchInput: '',
+            linkCitationCount: 0,
+            textCitationCount: 0,
+            totalCitationCount: 0,
+            pageReliabilityPercentage: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.getCredibilityScore = this.getCredibilityScore.bind(this)
     }
 
     update(field) {
@@ -32,12 +37,12 @@ export class WikiUrlInput extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        debugger
         this.visitPage(this.state.searchInput)
     }
 
     visitPage(pageUrl) {
-        // This proxy url is used to allow Cross Origin Resource Sharing (CORS)
+        // The proxy url is used to allow Cross Origin Resource Sharing (CORS)
+            // TODO : Review if this exposes any security vulnerability
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         request((proxyurl + pageUrl), (error, response, body) => {
             if (error) {
@@ -65,7 +70,6 @@ export class WikiUrlInput extends React.Component {
     getAllDomains(urls) {
         // @desc: Given a list of urls, grab domains from each one by extracting it from each
         // website's hostname ( example hostname: 'www.wikipedia.org' )
-
         let allDomains = [];
         urls.forEach(url => {
             const packagedUrl = new URL(url).hostname
@@ -119,11 +123,26 @@ export class WikiUrlInput extends React.Component {
 
         // Now we get the percentage of how reliable the source is vvv:
         console.log('Total link-including citation count : ' + domains.length)
+        this.setState({
+            linkCitationCount: domains.length
+        })
+        
         console.log('Total text citation count           : ' + textCitationCount)
+        this.setState({
+            textCitationCount: textCitationCount
+        })
+        
         console.log('Total citation count                : ' + totalCitationCount)
-
+        this.setState({
+            totalCitationCount: totalCitationCount
+        })
+        
         const pageReliabilityPercentage = (pageReliabilityScore / (totalCitationCount * 5)) * 100
-        console.log('Page reliability rating             : ' + String(pageReliabilityPercentage) + '%')
+        console.log('Page reliability rating             : ' + String(pageReliabilityPercentage.toFixed(2)) + '%')
+        this.setState({
+            pageReliabilityPercentage: String(pageReliabilityPercentage.toFixed(2)) + '%'
+        })
+
         return pageReliabilityPercentage
     }
 
@@ -135,7 +154,6 @@ export class WikiUrlInput extends React.Component {
 
                     <input
                         type="text"
-                        className="wiki-eval-input"
                         onChange={this.update('searchInput')}/>
                     <input type="submit" value="evaluate"/>
                 </form>
