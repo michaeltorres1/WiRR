@@ -15,8 +15,6 @@ let cheerio = require('cheerio')
 let URL = require('url-parse')
 // used to parse URLs
 
-import { WikiPageStats } from '../wiki_page_stats/wiki_page_stats';
-
 export class WikiUrlInput extends React.Component {
     constructor(props) {
         super(props)

@@ -6,18 +6,19 @@ import { Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <Switch> 
-      <Route
-        path="/"
-        component={WikiUrlInput}
-      />
+    // <Switch> 
+    //   <Route
+    //     path="/"
+    //     component={WikiUrlInput}
+    //   />
 
-      <Route 
-        path="/stats"
-        component={WikiPageStats}
-      />
-      
-    </Switch>
+    //   <Route 
+    //     path="/stats"
+    //     component={WikiPageStats}
+    //   />
+
+    // </Switch>
+    <WikiUrlInput />
   );
 }
 
