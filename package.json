@@ -19,14 +19,17 @@
   "homepage": "https://github.com/michaeltorres1/TBA#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cheerio": "^1.0.0-rc.3",
     "config": "^3.2.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.2.0",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "mem": "^5.1.1",
     "mongoose": "^5.7.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "url-parse": "^1.4.7"
   },
   "devDependencies": {
     "concurrently": "^4.1.2",
