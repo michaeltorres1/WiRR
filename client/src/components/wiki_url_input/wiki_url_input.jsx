@@ -57,16 +57,12 @@ let URL = require('url-parse')
 // used to parse URLs
 
 function visitPage(pageUrl) {
-    debugger
-    request(pageUrl, (error, response, body) => {
-        response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-        debugger
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
+    request((proxyurl + pageUrl), (error, response, body) => {
         if (error) {
-            debugger
             throw (error)
         }
-
-        debugger
 
 
         if (response.statusCode === 200) {
