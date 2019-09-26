@@ -156,7 +156,7 @@ export class WikiUrlInput extends React.Component {
                             className="wiki-eval-input"
                             onChange={this.update('searchInput')} />
                     </div>
-                    <input type="submit" class="btn btn-primary" value="evaluate" />
+                    <input type="submit" className="btn btn-primary" value="evaluate" />
                 </form>
             </div>
         )
