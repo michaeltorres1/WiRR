@@ -1,4 +1,5 @@
 let request = require('request')
+// let rp = require('request-promise');
 // used to make HTTP requests
 // Basically goes inside the page that you make a request to
 let cheerio = require('cheerio')
@@ -8,36 +9,23 @@ let cheerio = require('cheerio')
 // Docs say that it is about 8x faster than JS DOM
 let URL = require('url-parse')
 // used to parse URLs
+const util = require('util');
 
-export const visitPage = (pageUrl) => {
-  request(pageUrl, (error, response, body) => {
-    if (error) {
-      throw (error)
-    }
+export async function visitPage(pageUrl) {
+  // The proxy url is used to allow Cross Origin Resource Sharing (CORS)
+  // TODO : Review if this exposes any security vulnerability
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  // debugger;
 
-    if (response.statusCode === 200) {
-      const $ = cheerio.load(body)
+  const httpRequest = util.promisify(request)
+  const response = await httpRequest((proxyurl + pageUrl))
 
-      const allATagCitations = $("li[id^='cite_note'] a[rel='nofollow']:first-child")
-      const allCitations = $("li[id^='cite_note']")
-      const textCitationCount = allCitations.length - allATagCitations.length
-      let allCitationUrls = [];
-
-      allATagCitations.each(function () {
-        allCitationUrls.push($(this).attr('href'))
-      })
-
-      const allDomains = getAllDomains(allCitationUrls)
-      getCredibilityScore(allDomains, textCitationCount, allCitations.length)
-    }
-  })
+  return response;
 }
 
-
-function getAllDomains(urls) {
+const getAllDomains = (urls) => {
   // @desc: Given a list of urls, grab domains from each one by extracting it from each
   // website's hostname ( example hostname: 'www.wikipedia.org' )
-
   let allDomains = [];
   urls.forEach(url => {
     const packagedUrl = new URL(url).hostname
@@ -59,7 +47,7 @@ function getAllDomains(urls) {
   return allDomains
 }
 
-function getCredibilityScore(domains, textCitationCount, totalCitationCount) {
+const getCredibilityScore = (domains, textCitationCount, totalCitationCount) => {
   let pageReliabilityScore = 0;
 
   domains.forEach(domain => {
@@ -85,16 +73,28 @@ function getCredibilityScore(domains, textCitationCount, totalCitationCount) {
   })
 
   pageReliabilityScore += (textCitationCount * 5)
-  // We are assuming that all text citations here are either a
-  // book citation or a scholarly article, where each of those things
-  // have a point value of 5 points.
-
-  // Now we get the percentage of how reliable the source is vvv:
-  console.log('Total link-including citation count : ' + domains.length)
-  console.log('Total text citation count           : ' + textCitationCount)
-  console.log('Total citation count                : ' + totalCitationCount)
-
   const pageReliabilityPercentage = (pageReliabilityScore / (totalCitationCount * 5)) * 100
-  console.log('Page reliability rating             : ' + String(pageReliabilityPercentage) + '%')
+
   return pageReliabilityPercentage
+}
+
+export const processScore = (res) => {
+  if (res.statusCode === 200) {
+
+    const $ = cheerio.load(res.body)
+
+    const allATagCitations = $("li[id^='cite_note'] a[rel='nofollow']:first-child")
+    const allCitations = $("li[id^='cite_note']")
+    const textCitationCount = allCitations.length - allATagCitations.length
+    let allCitationUrls = [];
+
+    allATagCitations.each(function () {
+      allCitationUrls.push($(this).attr('href'))
+    })
+
+    const allDomains = getAllDomains(allCitationUrls)
+
+    let score = getCredibilityScore(allDomains, textCitationCount, allCitations.length);
+    return `${score.toFixed(2)}`;
+  }
 }

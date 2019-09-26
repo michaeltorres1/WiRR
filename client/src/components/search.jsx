@@ -1,5 +1,6 @@
 import React from 'react';
-import {visitPage} from './wirr';
+import {visitPage, processScore} from './wirr';
+// import SearchResult from './search_result';
 
 class WikiSearch extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class WikiSearch extends React.Component {
     this.state = { 
       search_text: '',
       search_result: [],
+      score: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -28,7 +30,9 @@ class WikiSearch extends React.Component {
       format: "json",
       list: "search",
       srlimit: 5, // how many articles to return
-      srprop: "wordcount|timestamp|snippet|titlesnippet|sectiontitle|sectionsnippet|categorysnippet|contributors|categories",
+      // srprop: "wordcount|timestamp|snippet|titlesnippet|sectiontitle|sectionsnippet|categorysnippet|contributors|categories",
+      prop: "info",
+      inprop: "url",
       srsearch: this.state.search_text
     }
 
@@ -37,21 +41,41 @@ class WikiSearch extends React.Component {
     });
 
     fetch(apiUrl)
-      .then(function (response) { return response.json(); })
-      .then(function (response) {
-        const results = response.query.search;
-        results.forEach( (result) => {
+      .then((response) => { return response.json(); })
+      .then((data) => {
+        const results = data.query.search;
+        const parseResult = results.map( (result, i) => {
           let articleUrl = "https://en.wikipedia.org/wiki/";
-          articleUrl += result.title;
-          visitPage(articleUrl);
-        })
-
+          articleUrl += result.title.split(' ').join('_');
+          let score = "";
+          visitPage(articleUrl).then( res => {
+            score = processScore(res);
+            if (score !== NaN) {
+              let prevResults = this.state.search_result;
+              let thisResult = (
+                <div key={`result-${i}`} className="searchResult">
+                  <h3 className="searchResult-title">
+                  <a href={`${articleUrl}`} target="_blank">{result.title}</a>
+                    ({score} %)
+                  </h3>
+                  <br/>
+                  <div className="searchResult-snippet">
+                  {result.snippet}
+                  </div>
+                </div>
+              )
+              prevResults.push(thisResult);
+              this.setState({ search_result: prevResults})
+              }
+            })
+          })
       })
-      .catch(function (error) { console.log(error); });
 
+      .catch(function (error) { console.log(error); });
   };
 
   render() {
+    // console.log(this.state)
     return(
       <div>
         <form className='searchForm' onSubmit={this.handleSubmit}>
@@ -64,7 +88,7 @@ class WikiSearch extends React.Component {
           <input type="submit" value="Search"/>
         </form>
 
-        <div className='searchResult'>
+        <div className='searchResults'>
           {this.state.search_result}
         </div>
       </div>

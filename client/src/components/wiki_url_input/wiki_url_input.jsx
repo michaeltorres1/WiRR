@@ -37,47 +37,6 @@ export class WikiUrlInput extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-<<<<<<< HEAD
-        visitPage(this.state.searchInput)
-    }
-
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        className="wiki-eval-input"
-                        onChange={this.update('searchInput')}/>
-                    <input type="submit" value="evaluate"/>
-                </form>
-            </div>
-        )
-    }
-}
-
-/////////////////////////////////////////////////////////
-
-let request = require('request')
-// used to make HTTP requests
-// Basically goes inside the page that you make a request to
-let cheerio = require('cheerio')
-// used to parse the HTML elements on the page
-// Pretty much the same as using jQuery
-// but MUCH faster than JS DOM and jQuery
-// Docs say that it is about 8x faster than JS DOM
-let URL = require('url-parse')
-// used to parse URLs
-
-function visitPage(pageUrl) {
-    request(pageUrl, (error, response, body) => {
-        if (error) {
-            throw (error)
-        }
-
-        if (response.statusCode === 200) {
-            const $ = cheerio.load(body)
-=======
         this.visitPage(this.state.searchInput)
     }
 
@@ -92,7 +51,6 @@ function visitPage(pageUrl) {
 
             if (response.statusCode === 200) {
                 const $ = cheerio.load(body)
->>>>>>> master
 
                 const allATagCitations = $("li[id^='cite_note'] a[rel='nofollow']:first-child")
                 const allCitations = $("li[id^='cite_note']")

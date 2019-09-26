@@ -202,3 +202,42 @@ button {
     width: 260px;
   }
 }
+
+/* search result */
+
+.searchResults {
+  padding: 20px 0 50px;
+  margin-left: 140px;
+  width: 550px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.searchResult {
+  margin-bottom: 20px;
+  color: white;
+  border-radius: 2px;
+  padding: 10px;
+  width: 100%;
+}
+
+.searchResult:hover {
+  background-color: #434343;
+}
+
+.searchResult-title {
+  margin-bottom: 4px;
+}
+
+.searchResult-title a {
+  color: white;
+  text-decoration: none;
+}
+
+.searchResult-title a:hover {
+  text-decoration: underline;
+}
+
+.searchResult-snippet, .searchResult-link {
+  color: white;
+}
