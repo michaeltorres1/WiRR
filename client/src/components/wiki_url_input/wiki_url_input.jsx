@@ -25,6 +25,7 @@ export class WikiUrlInput extends React.Component {
             totalCitationCount: 0,
             pageReliabilityPercentage: ''
         }
+        
         this.handleSubmit = this.handleSubmit.bind(this)
         this.getCredibilityScore = this.getCredibilityScore.bind(this)
     }
