@@ -59,6 +59,7 @@ export class DonutGraph extends React.Component {
     }
 
     drawChart() {
+        d3.select("#author_contribution_percentage_per_article").html("")
         const radius = Math.min(this.state.width, this.state.height) / 2 - this.state.margin
         let svg = d3.select("#author_contribution_percentage_per_article")
             .append("svg")
@@ -78,7 +79,7 @@ export class DonutGraph extends React.Component {
         // Add div to body but isn't visible 
         // this will be the box that appears next to mouse
         // on hover
-        var div = d3.select("body").append("div")
+        let div = d3.select("body").append("div")
             .attr("class", "tooltip-donut")
             .style("opacity", 0);
 
@@ -94,7 +95,7 @@ export class DonutGraph extends React.Component {
             .attr('fill', function (d) { return (color(d.data.key)) })
             .attr('stroke', 'black')
             .style('stroke-width', '2px')
-            .attr('opacity', 0.7)
+            .attr('opacity', 1)
 
             .on('mouseover', function (d, i) {
                 d3.select(this).transition()
