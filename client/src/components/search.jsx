@@ -49,8 +49,6 @@ class WikiSearch extends React.Component {
           articleUrl += result.title.split(' ').join('_');
           let score = "";
 
-          topTenAuthorContributionPercentage(articleUrl)
-          
           visitPage(articleUrl).then( res => {
             score = processScore(res);
             if (score !== NaN) {
