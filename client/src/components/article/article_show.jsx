@@ -12,7 +12,7 @@ export class ArticleShow extends React.Component {
     render() {
         return (
             <div>
-                <DonutGraph />
+                <DonutGraph articleUrl={this.state.articleUrl}/>
             </div>
         )
     }
