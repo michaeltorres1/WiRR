@@ -4,8 +4,8 @@
 
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './layout/Navbar';
-import Landing from './layout/Landing';
+import Navbar from './layout/navbar';
+import Landing from './layout/landing';
 import Register from './auth/Register';
 import Login from './auth/Login';
 import { Provider } from 'react-redux';

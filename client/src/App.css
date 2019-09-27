@@ -100,12 +100,6 @@ ul {
   width: 520px;
 }
 
-.form input[type='text'],
-.form input[type='submit'],
-button {
-  font: inherit;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -163,6 +157,37 @@ button {
   margin-top: 6rem;
   margin-bottom: 3rem;
 }
+
+.login-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-login {
+  display: contents;
+}
+
+.container-login {
+  height: 100vh;
+}
+
+.signin-title {
+  margin-top: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.email-login, .password-login, .btn-login {
+  width: 400px;
+  height: 30px;
+}
+
+.or-register {
+  justify-content: space-evenly;
+  margin-left: 35%;
+}
+
+
 
 /* different viewport support */
 @media (max-width: 700px) {

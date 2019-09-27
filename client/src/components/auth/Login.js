@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
-const Login = ({ login }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: ''
+    email: '',
+    password: ''
   });
 
   const { email, password } = formData;
@@ -23,39 +23,54 @@ const Login = ({ login }) => {
     console.log('Logged in');
   }
 
+  if (isAuthenticated) {
+    return <Redirect to="/" />
+  }
+
   return (
-    <div>
-      <h1 className='large text-primary'>Sign In</h1>
-      <form className='form' onSubmit={e => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={e => onChange(e)}
-          />
+    <section className="login">
+      <div className="dark-overlay">
+        <div className="login-inner">
+          <div className="container container-login">
+          <h1 className="signin-title">Sign In</h1>
+          <form className='form-login' onSubmit={e => onSubmit(e)}>
+            <div className='form-group-login-email'>
+              <input
+                className="email-login"
+                type='email'
+                placeholder='Email Address'
+                name='email'
+                value={email}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                className="password-login"
+                type='password'
+                placeholder='Password'
+                name='password'
+                value={password}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <input type='submit' className='btn btn-primary btn-login' value='Login' />
+          </form>
+          <p className="or-register"> or <Link to="/register">Sign Up</Link> </p>
+          </div>
         </div>
-        <div className='form-group'>
-          <input
-            type='password'
-            placeholder='Password'
-            name='password'
-            value={password}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <input type='submit' className='btn btn-primary' value='Login' />
-      </form>
-      <p>
-        or <Link to="/login">Sign Up</Link>
-      </p>
-    </div>
+      </div>
+    </section>
   );
 };
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, { login })(Login);
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(Login);
