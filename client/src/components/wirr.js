@@ -89,8 +89,14 @@ export const topTenAuthorContributionPercentage = (url) => {
   visitPage("https://xtools.wmflabs.org/authorship/en.wikipedia.org/" + articleName).then(res => {
     const $2 = cheerio.load(res.body)
 
-    const top10Authors = $2('table.authorship-table td.sort-entry--username').slice(0, 10)
+    const top10AuthorsUsernames = $2('table.authorship-table td.sort-entry--username').slice(0, 10)
       .map(function () { return $2(this).attr("data-value"); }).get()
+    
+    const top10AuthorsContributionPercentage = $2('table.authorship-table td.sort-entry--percentage').slice(0, 10)
+      .map(function () { return $2(this).attr("data-value"); }).get()
+    
+    const top10Authors = {}
+    top10AuthorsUsernames.forEach( (author, idx) => top10Authors[author] = top10AuthorsContributionPercentage[idx])
     
   })
 }
