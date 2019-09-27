@@ -8,6 +8,8 @@ import Navbar from './layout/navbar';
 import Landing from './layout/landing';
 import Register from './auth/Register';
 import Login from './auth/Login';
+import { ArticleShow } from './article/article_show';
+
 import { Provider } from 'react-redux';
 import store from '../store';
 import { loadUser } from '../actions/auth';
@@ -33,6 +35,7 @@ const App = () => {
             <Switch>
               <Route exact path="/register" component={ Register } />
               <Route exact path="/login" component={ Login } />
+              <Route exact path="/article/show" component={ArticleShow} />
             </Switch>
           </section>
         </div>

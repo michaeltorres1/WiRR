@@ -1,6 +1,7 @@
 import React from 'react';
 import { visitPage, processScore, topTenAuthorContributionPercentage } from './wirr';
 // import SearchResult from './search_result';
+import { Link } from 'react-router-dom';
 
 class WikiSearch extends React.Component {
   constructor(props) {
@@ -56,7 +57,13 @@ class WikiSearch extends React.Component {
               let thisResult = (
                 <div key={`result-${i}`} className="searchResult">
                   <h3 className="searchResult-title">
-                  <a href={`${articleUrl}`} target="_blank">{result.title}</a>
+                    
+                    <Link 
+                      to={{
+                        pathname: "/article/show",
+                        articleUrl: `${articleUrl}`}}>
+                      {result.title}
+                    </Link>
                     ({score} %)
                   </h3>
                   <br/>
