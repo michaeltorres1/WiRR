@@ -11,9 +11,9 @@ export class DonutGraph extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: {"loading...": 10, "please": 10, "wait": 10},
+            data: {"loading...": 10, "please...": 10, "wait...": 10},
             margin: 40,
-            width: 600,
+            width: 700,
             height: 450
         }
         this.topTenAuthorContributionPercentage = this.topTenAuthorContributionPercentage.bind(this)
@@ -31,6 +31,10 @@ export class DonutGraph extends React.Component {
         // 2. Get article name from pathanme by parsing
         // (already joined by '_' from 'search.jsx')
         const articleName = packagedUrl.pathname.split('/').slice(-1)[0]
+
+            // We are going to store top ten authors here
+        let topTenAuthors = {};
+
         // 3. Load it in the xtools wikipedia authorship statistics page
         visitPage("https://xtools.wmflabs.org/authorship/en.wikipedia.org/" + articleName).then(res => {
             const $2 = cheerio.load(res.body)
@@ -41,21 +45,21 @@ export class DonutGraph extends React.Component {
             const authorsContributionPercentage = $2('table.authorship-table td.sort-entry--percentage').slice(0, 10)
                 .map(function () { return $2(this).attr("data-value"); }).get()
 
-            const topTenAuthors = {};
             authorsUsernames.forEach((author, idx) => topTenAuthors[author] = authorsContributionPercentage[idx]);
 
-            debugger
+            return topTenAuthors
+        }).then( topTenAuthors => {
             this.setState({
                 data: topTenAuthors
-            })   
-        }).catch(err => {
+            })
+        })
+        .catch(err => {
             throw err
         })
     }
 
     drawChart() {
         const radius = Math.min(this.state.width, this.state.height) / 2 - this.state.margin
-
         let svg = d3.select("#author_contribution_percentage_per_article")
             .append("svg")
             .attr("width", this.state.width)
@@ -150,6 +154,7 @@ export class DonutGraph extends React.Component {
     }
 
     render() {
+        this.drawChart()
         return (
             <div>
                 <div id="author_contribution_percentage_per_article">
