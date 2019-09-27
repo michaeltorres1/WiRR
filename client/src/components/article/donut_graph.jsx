@@ -1,10 +1,11 @@
 import React from 'react';
-import '../../stylesheets/donut_chart.css';
+import '../../stylesheets/donut_graph.css';
 import * as d3 from 'd3';
+
 
 // Inspired by : https://www.d3-graph-gallery.com/graph/donut_basic.html
               // https://medium.com/@kj_schmidt/show-data-on-mouse-over-with-d3-js-3bf598ff8fc2
-class DonutGraph extends React.Component {
+export class DonutGraph extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

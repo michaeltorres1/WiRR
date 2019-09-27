@@ -1,4 +1,5 @@
 import React from 'react'
+import { DonutGraph } from './donut_graph';
 
 export class ArticleShow extends React.Component {
     constructor(props) {
@@ -11,7 +12,7 @@ export class ArticleShow extends React.Component {
     render() {
         return (
             <div>
-                This is the show page of a specific article            
+                <DonutGraph />
             </div>
         )
     }
