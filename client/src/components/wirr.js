@@ -78,6 +78,23 @@ const getCredibilityScore = (domains, textCitationCount, totalCitationCount) => 
   return pageReliabilityPercentage
 }
 
+
+export const topTenAuthorContributionPercentage = (url) => {
+  // 1. Load under the 'url' package for proper parsing
+  const packagedUrl = new URL(url)
+  // 2. Get article name from pathanme by parsing
+    // Already joined by '_' from 'search.jsx'
+  const articleName = packagedUrl.pathname.split('/').slice(-1)[0]
+  // 3. Load it in the xtools wikipedia authorship statistics page
+  visitPage("https://xtools.wmflabs.org/authorship/en.wikipedia.org/" + articleName).then(res => {
+    const $2 = cheerio.load(res.body)
+
+    const top10Authors = $2('table.authorship-table td.sort-entry--username').slice(0, 10)
+      .map(function () { return $2(this).attr("data-value"); }).get()
+    
+  })
+}
+
 export const processScore = (res) => {
   if (res.statusCode === 200) {
 

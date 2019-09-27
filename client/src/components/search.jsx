@@ -1,5 +1,5 @@
 import React from 'react';
-import {visitPage, processScore} from './wirr';
+import { visitPage, processScore, topTenAuthorContributionPercentage } from './wirr';
 // import SearchResult from './search_result';
 
 class WikiSearch extends React.Component {
@@ -48,6 +48,9 @@ class WikiSearch extends React.Component {
           let articleUrl = "https://en.wikipedia.org/wiki/";
           articleUrl += result.title.split(' ').join('_');
           let score = "";
+
+          topTenAuthorContributionPercentage(articleUrl)
+          
           visitPage(articleUrl).then( res => {
             score = processScore(res);
             if (score !== NaN) {
