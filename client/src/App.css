@@ -100,6 +100,33 @@ ul {
   width: 520px;
 }
 
+.form input[type='text'],
+.form input[type='submit'],
+.form input[type='email'],
+.form input[type='password'],
+.signup-login,
+.password-login
+button {
+  font: inherit;
+  border-radius: 100px;
+}
+
+.form input[type='text']:focus,
+.form input[type='submit']:focus,
+.form input[type='email']:focus,
+.form input[type='password']:focus,
+.signup-login:focus,
+.password-login:focus
+button:focus {
+  outline: none;
+  background: #b1bace;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -149,45 +176,19 @@ ul {
   display: none;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  overflow: hidden;
-  padding: 0 2rem;
-  margin-top: 6rem;
-  margin-bottom: 3rem;
+.signup-login {
+  text-decoration: none;
+  color: white;
 }
 
-.login-inner {
-  display: flex;
-  justify-content: space-between;
+.signup-login:hover {
+  color: var(--primary-color);
 }
 
-.form-login {
-  display: contents;
-}
-
-.container-login {
-  height: 100vh;
-}
-
-.signin-title {
-  margin-top: 50%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.email-login, .password-login, .btn-login {
+.email-input-login, .password-login {
   width: 400px;
-  height: 30px;
+  text-align: center;
 }
-
-.or-register {
-  justify-content: space-evenly;
-  margin-left: 35%;
-}
-
-
 
 /* different viewport support */
 @media (max-width: 700px) {

@@ -34,51 +34,55 @@ const Register = ({ register, isAuthenticated }) => {
   }
 
   return (
-    <div>
-      <h1 className='large text-primary'>Sign Up</h1>
-      <form className='form' onSubmit={e => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Name'
-            name='name'
-            value={name}
-            onChange={e => onChange(e)}
-          />
+    <section className="landing">
+      <div className="dark-overlay">
+        <div className="landing-inner">
+          <h1> Please sign Up</h1>
+          <form className='form' onSubmit={e => onSubmit(e)}>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Name'
+                name='name'
+                value={name}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='email'
+                placeholder='Email Address'
+                name='email'
+                value={email}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='password'
+                placeholder='Password'
+                name='password'
+                value={password}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='password'
+                placeholder='Confirm Password'
+                name='password2'
+                value={password2}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <input type='submit' className='btn btn-primary' value='Register' />
+          </form>
+          <p>
+            or <Link to="/login">Sign In</Link>
+          </p>
         </div>
-        <div className='form-group'>
-          <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            type='password'
-            placeholder='Password'
-            name='password'
-            value={password}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            type='password'
-            placeholder='Confirm Password'
-            name='password2'
-            value={password2}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <input type='submit' className='btn btn-primary' value='Register' />
-      </form>
-      <p>
-        or <Link to="/login">Sign In</Link>
-      </p>
-    </div>
+      </div>
+    </section>
   );
 };
 
