@@ -57,7 +57,7 @@ router.post(
         return res.status(400).json({ errors: [{ msg: 'Invalid credentials!' }]});
       }
 
-      const payload = {
+      const data = {
         user: {
           id: user.id
         }
@@ -65,7 +65,7 @@ router.post(
 
       // TODO: Change expired time to 1 hr (36000) when deployed
       jwt.sign(
-        payload,
+        data,
         config.get('secretOrKey'),
         { expiresIn: 360000 },
         (err, token) => {
