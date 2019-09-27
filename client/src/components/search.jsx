@@ -78,14 +78,16 @@ class WikiSearch extends React.Component {
     // console.log(this.state)
     return(
       <div>
-        <form className='searchForm' onSubmit={this.handleSubmit}>
-          <input
-            type='text'
-            className='searchInput'
-            value={this.state.searchText}
-            onChange={this.updateField('search_text')}
-          />
-          <input type="submit" value="Search"/>
+        <form className='form' onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <input
+              type='text'
+              className='wiki-eval-input'
+              value={this.state.searchText}
+              onChange={this.updateField('search_text')}
+            />
+          </div>
+            <input type='submit' className='btn btn-primary' value="Search"/>
         </form>
 
         <div className='searchResults'>

@@ -11,16 +11,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michaeltorres1/TBA.git"
+    "url": "git+https://github.com/michaeltorres1/WiRR.git"
   },
-  "author": "Michael Torres",
+  "authors": "Michael Torres, Kevin Kaminski, Hakeem Almidan, Lwin Ye",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/michaeltorres1/TBA/issues"
+    "url": "https://github.com/michaeltorres1/WiRR/issues"
   },
-  "homepage": "https://github.com/michaeltorres1/TBA#readme",
+  "homepage": "https://github.com/michaeltorres1/WiRR#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
     "config": "^3.2.2",
     "cors": "^2.8.5",

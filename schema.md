@@ -49,7 +49,7 @@ const articles = {
     description: {
       type: Text,
       required: true
-    }
+    },
     url: {
       type: String,
       required: true
