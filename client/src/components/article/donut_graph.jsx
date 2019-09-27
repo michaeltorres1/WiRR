@@ -32,7 +32,7 @@ export class DonutGraph extends React.Component {
         // (already joined by '_' from 'search.jsx')
         const articleName = packagedUrl.pathname.split('/').slice(-1)[0]
 
-            // We are going to store top ten authors here
+        // We are going to store top ten authors and their contributions here
         let topTenAuthors = {};
 
         // 3. Load it in the xtools wikipedia authorship statistics page
@@ -49,6 +49,9 @@ export class DonutGraph extends React.Component {
 
             return topTenAuthors
         }).then( topTenAuthors => {
+            let remainingPercentage = 100 - Object.values(topTenAuthors)
+                                            .reduce((accum, el) => accum + parseInt(el))
+           topTenAuthors = Object.assign(topTenAuthors, {others: remainingPercentage.toFixed(2)})
             this.setState({
                 data: topTenAuthors
             })
@@ -70,7 +73,7 @@ export class DonutGraph extends React.Component {
 
         let color = d3.scaleOrdinal()
             .domain(this.state.data)
-            .range(["violet", "indigo", "skyblue", "blue", "green", "lightgreen", "yellow", "orange", "red", "lightred"])
+            .range(["violet", "indigo", "skyblue", "blue", "green", "lightgreen", "yellow", "orange", "red", "lightred", "skyBlue"])
 
         let pie = d3.pie()
             .value(function (d) { return d.value })
