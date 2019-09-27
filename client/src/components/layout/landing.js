@@ -1,5 +1,6 @@
 import React from 'react'
 import { WikiUrlInput } from '../wiki_url_input/wiki_url_input';
+import WikiSearch from '../search';
 
 const Landing = () => {
   return (
@@ -12,7 +13,7 @@ const Landing = () => {
             of the article
           </p>
           <div className="buttons">
-            <WikiUrlInput />
+            <WikiSearch />
           </div>
         </div>
       </div>
