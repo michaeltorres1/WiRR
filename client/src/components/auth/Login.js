@@ -28,15 +28,14 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <section className="login">
+    <section className="landing">
       <div className="dark-overlay">
-        <div className="login-inner">
-          <div className="container container-login">
-          <h1 className="signin-title">Sign In</h1>
-          <form className='form-login' onSubmit={e => onSubmit(e)}>
-            <div className='form-group-login-email'>
+        <div className="landing-inner">
+          <h1>Please sign in</h1>
+          <form className='form form-login' onSubmit={e => onSubmit(e)}>
+            <div className='form-group'>
               <input
-                className="email-login"
+                className="email-input"
                 type='email'
                 placeholder='Email Address'
                 name='email'
@@ -46,7 +45,7 @@ const Login = ({ login, isAuthenticated }) => {
             </div>
             <div className='form-group'>
               <input
-                className="password-login"
+                className="password-input"
                 type='password'
                 placeholder='Password'
                 name='password'
@@ -54,12 +53,11 @@ const Login = ({ login, isAuthenticated }) => {
                 onChange={e => onChange(e)}
               />
             </div>
-            <input type='submit' className='btn btn-primary btn-login' value='Login' />
+            <input type='submit' className='btn btn-primary' value='Login' />
+            <p> or <Link to="/register" className="signup-or-signin">Sign Up</Link></p>
           </form>
-          <p className="or-register"> or <Link to="/register">Sign Up</Link> </p>
           </div>
         </div>
-      </div>
     </section>
   );
 };
