@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../stylesheets/donut_graph.css';
+import '../../../stylesheets/donut_graph.css';
 import * as d3 from 'd3';
-import { visitPage } from '../wirr';
+import { visitPage } from '../../wirr';
 let cheerio = require('cheerio')
 let URL = require('url-parse')
 

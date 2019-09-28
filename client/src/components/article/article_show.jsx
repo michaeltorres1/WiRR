@@ -1,5 +1,5 @@
 import React from 'react'
-import { DonutGraph } from './donut_graph';
+import { DonutGraph } from './charts/donut_graph';
 import WikiSearch from '../search';
 
 export class ArticleShow extends React.Component {
@@ -14,6 +14,7 @@ export class ArticleShow extends React.Component {
         return (
             <div>
                 <WikiSearch />
+
                 <DonutGraph articleUrl={this.state.articleUrl}/>
             </div>
         )

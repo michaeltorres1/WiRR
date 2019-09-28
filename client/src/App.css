@@ -59,9 +59,25 @@ ul {
   outline: none;
 }
 
-.btn-primary {
+.btn-primary, .dummy {
+  height: 44px;
+  margin-top: 18.5px;
   background: var(--primary-color);
   color: #fff;
+}
+
+.btn-secondary {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  background: var(--primary-color);
+  color: #fff;
+}
+
+#radar {
+  width: 100%;
+  height: 100%;
 }
 
 .bg-dark {
@@ -98,6 +114,33 @@ ul {
   margin-right: 0.5rem;
   outline: none;
   width: 520px;
+}
+
+.form input[type='text'],
+.form input[type='submit'],
+.form input[type='email'],
+.form input[type='password'],
+.signup-or-signin,
+.password-login
+button {
+  font: inherit;
+  border-radius: 100px;
+}
+
+.form input[type='text']:focus,
+.form input[type='submit']:focus,
+.form input[type='email']:focus,
+.form input[type='password']:focus,
+.signup-or-signin:focus,
+.password-login:focus
+button:focus {
+  outline: none;
+  background: #b1bace;
+}
+
+.form-login, .form-register {
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar {
@@ -149,45 +192,22 @@ ul {
   display: none;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  overflow: hidden;
-  padding: 0 2rem;
-  margin-top: 6rem;
-  margin-bottom: 3rem;
+.signup-or-signin {
+  text-decoration: none;
+  color: white;
 }
 
-.login-inner {
-  display: flex;
-  justify-content: space-between;
+.signup-or-signin:hover {
+  color: var(--primary-color);
 }
 
-.form-login {
-  display: contents;
-}
-
-.container-login {
-  height: 100vh;
-}
-
-.signin-title {
-  margin-top: 50%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.email-login, .password-login, .btn-login {
+.email-input,
+.password-input,
+.name-input-register,
+.password-input-register {
   width: 400px;
-  height: 30px;
+  text-align: center;
 }
-
-.or-register {
-  justify-content: space-evenly;
-  margin-left: 35%;
-}
-
-
 
 /* different viewport support */
 @media (max-width: 700px) {
@@ -238,6 +258,10 @@ ul {
     outline: none;
     width: 260px;
   }
+
+  /* .email-input-login {
+    width: 300px;
+  } */
 }
 
 /* search result */
