@@ -1,5 +1,6 @@
 import React from 'react'
 import { DonutGraph } from './donut_graph';
+import WikiSearch from '../search';
 
 export class ArticleShow extends React.Component {
     constructor(props) {
@@ -12,6 +13,7 @@ export class ArticleShow extends React.Component {
     render() {
         return (
             <div>
+                <WikiSearch />
                 <DonutGraph articleUrl={this.state.articleUrl}/>
             </div>
         )
