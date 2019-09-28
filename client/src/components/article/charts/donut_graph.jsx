@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../stylesheets/donut_graph.css';
 import * as d3 from 'd3';
 import { visitPage } from '../../wirr';
 let cheerio = require('cheerio')
@@ -88,6 +87,7 @@ export class DonutGraph extends React.Component {
 
         const path = svg
             .selectAll('path')
+            .attr('class', 'donut-graph-svg')
             .data(data_ready)
             .enter()
             .append('path')

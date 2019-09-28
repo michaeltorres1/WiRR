@@ -1,0 +1,7 @@
+.article-show-charts {
+    display: flex;
+}
+
+#author_contribution_percentage_per_article {
+    border: 3px solid orange;
+}

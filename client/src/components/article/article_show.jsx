@@ -13,7 +13,7 @@ export class ArticleShow extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="article-show-page-container">
                 <WikiSearch />
                 <div className="article-show-charts">
                     <RadarChart />

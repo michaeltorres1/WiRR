@@ -2,19 +2,27 @@
 // // Filename: App.js
 // // Description: The purpose of this files is to render the react components
 
+// Package importing
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+// Function and variable importing
 import Navbar from './layout/navbar';
 import Landing from './layout/landing';
 import Register from './auth/Register';
 import Login from './auth/Login';
 import { ArticleShow } from './article/article_show';
-
-import { Provider } from 'react-redux';
 import store from '../store';
 import { loadUser } from '../actions/auth';
 import setAuthToken from '../utils/setAuthToken';
+
+// Stylesheets (CSS)
 import '../App.css';
+import '../stylesheets/article_show.css'
+import '../stylesheets/charts.css';
+import '../stylesheets/donut_graph.css';
+
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
