@@ -73,7 +73,7 @@ export class DonutGraph extends React.Component {
 
         let color = d3.scaleOrdinal()
             .domain(this.state.data)
-            .range(["violet", "indigo", "skyblue", "blue", "green", "lightgreen", "yellow", "orange", "red", "lightred", "skyBlue"])
+            .range(["violet", "indigo", "skyblue", "blue", "green", "lightgreen", "yellow", "orange", "red", "lightred", "lightBlue"])
 
         let pie = d3.pie()
             .value(function (d) { return d.value })
