@@ -35,7 +35,7 @@ const Login = ({ login, isAuthenticated }) => {
           <form className='form form-login' onSubmit={e => onSubmit(e)}>
             <div className='form-group'>
               <input
-                className="email-input-login"
+                className="email-input"
                 type='email'
                 placeholder='Email Address'
                 name='email'
@@ -45,7 +45,7 @@ const Login = ({ login, isAuthenticated }) => {
             </div>
             <div className='form-group'>
               <input
-                className="password-login"
+                className="password-input"
                 type='password'
                 placeholder='Password'
                 name='password'
@@ -53,8 +53,8 @@ const Login = ({ login, isAuthenticated }) => {
                 onChange={e => onChange(e)}
               />
             </div>
-            <input type='submit' className='btn btn-primary btn-login' value='Login' />
-            <p className="or-register"> or <Link to="/register" className="signup-login">Sign Up</Link></p>
+            <input type='submit' className='btn btn-primary' value='Login' />
+            <p> or <Link to="/register" className="signup-or-signin">Sign Up</Link></p>
           </form>
           </div>
         </div>

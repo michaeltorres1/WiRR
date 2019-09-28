@@ -104,7 +104,7 @@ ul {
 .form input[type='submit'],
 .form input[type='email'],
 .form input[type='password'],
-.signup-login,
+.signup-or-signin,
 .password-login
 button {
   font: inherit;
@@ -115,14 +115,14 @@ button {
 .form input[type='submit']:focus,
 .form input[type='email']:focus,
 .form input[type='password']:focus,
-.signup-login:focus,
+.signup-or-signin:focus,
 .password-login:focus
 button:focus {
   outline: none;
   background: #b1bace;
 }
 
-.form-login {
+.form-login, .form-register {
   display: flex;
   flex-direction: column;
 }
@@ -176,16 +176,19 @@ button:focus {
   display: none;
 }
 
-.signup-login {
+.signup-or-signin {
   text-decoration: none;
   color: white;
 }
 
-.signup-login:hover {
+.signup-or-signin:hover {
   color: var(--primary-color);
 }
 
-.email-input-login, .password-login {
+.email-input,
+.password-input,
+.name-input-register,
+.password-input-register {
   width: 400px;
   text-align: center;
 }

@@ -38,9 +38,10 @@ const Register = ({ register, isAuthenticated }) => {
       <div className="dark-overlay">
         <div className="landing-inner">
           <h1> Please sign Up</h1>
-          <form className='form' onSubmit={e => onSubmit(e)}>
+          <form className='form form-register' onSubmit={e => onSubmit(e)}>
             <div className='form-group'>
               <input
+                className="name-input-register"
                 type='text'
                 placeholder='Name'
                 name='name'
@@ -50,6 +51,7 @@ const Register = ({ register, isAuthenticated }) => {
             </div>
             <div className='form-group'>
               <input
+                className="email-input"
                 type='email'
                 placeholder='Email Address'
                 name='email'
@@ -59,6 +61,7 @@ const Register = ({ register, isAuthenticated }) => {
             </div>
             <div className='form-group'>
               <input
+                className="password-input"
                 type='password'
                 placeholder='Password'
                 name='password'
@@ -68,6 +71,7 @@ const Register = ({ register, isAuthenticated }) => {
             </div>
             <div className='form-group'>
               <input
+                className="password-input"
                 type='password'
                 placeholder='Confirm Password'
                 name='password2'
@@ -75,11 +79,9 @@ const Register = ({ register, isAuthenticated }) => {
                 onChange={e => onChange(e)}
               />
             </div>
-            <input type='submit' className='btn btn-primary' value='Register' />
+            <input type='submit' className='btn btn-primary btn-register' value='Register' />
           </form>
-          <p>
-            or <Link to="/login">Sign In</Link>
-          </p>
+          <p> or <Link to="/login" className="signup-or-signin">Sign In</Link></p>
         </div>
       </div>
     </section>
