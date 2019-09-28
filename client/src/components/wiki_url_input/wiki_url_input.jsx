@@ -4,6 +4,8 @@
 //               of how credible/reliable a page is.
 
 import React from 'react'
+import { Link, Redirect } from 'react-router-dom';
+
 let request = require('request')
 // used to make HTTP requests
 // Basically goes inside the page that you make a request to
