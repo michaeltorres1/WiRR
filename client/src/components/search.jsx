@@ -92,9 +92,7 @@ class WikiSearch extends React.Component {
               onChange={this.updateField('search_text')}
             />
           </div>
-          <Link to="/articles" className='btn btn-primary dummy'>
             <input type='submit' className='btn btn-secondary' value="Search" />
-          </Link>
         </form>
 
         <div className='searchResults'>
