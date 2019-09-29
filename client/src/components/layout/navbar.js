@@ -26,7 +26,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to="/login">Sign in</Link>
       </li>
       <li className="dropdown-menu">
-        <Link to="/"><i className="fas fa-bars"></i></Link>
+        <Link to="#">
+          <i className="fas fa-bars">
+            <div className="dropdown-content">
+              <Link to="/register">Sign up</Link>
+              <Link to="/login">Sign in</Link>
+            </div>
+          </i>
+        </Link>
       </li>
     </ul>
   );
