@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {createArticle, searchDB} from '../actions/article_actions';
+import {createArticle, searchDB} from '../../actions/article_actions';
 import WikiSearch from './search';
 
 const mstp = (state, ownProps) => {

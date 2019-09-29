@@ -1,6 +1,6 @@
 import React from 'react';
 import * as d3 from 'd3';
-import { visitPage } from '../../wirr';
+import { visitPage } from '../../../utils/wirr';
 let cheerio = require('cheerio')
 let URL = require('url-parse')
 

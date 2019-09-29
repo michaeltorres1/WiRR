@@ -1,6 +1,5 @@
 import React from 'react';
-import { visitPage, processScore } from './wirr';
-// import SearchResult from './search_result';
+import { visitPage, processScore } from '../../utils/wirr';
 import { Link } from 'react-router-dom';
 
 class WikiSearch extends React.Component {
@@ -18,9 +17,9 @@ class WikiSearch extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.searchDB(this.state.search_text)
-      .then( res => console.log(res))
-    // this.searchWiki();
+    // this.props.searchDB(this.state.search_text)
+    //   .then( res => console.log(res))
+    this.searchWiki();
   };
 
   searchWiki() {

@@ -1,6 +1,5 @@
 import React from 'react'
-import { WikiUrlInput } from '../wiki_url_input/wiki_url_input';
-import WikiSearchContainer from '../search_container';
+import WikiSearchContainer from '../../components/search/search_container';
 
 const Landing = () => {
   return (
