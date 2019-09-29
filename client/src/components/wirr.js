@@ -15,7 +15,6 @@ export async function visitPage(pageUrl) {
   // The proxy url is used to allow Cross Origin Resource Sharing (CORS)
   // TODO : Review if this exposes any security vulnerability
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  // debugger;
 
   const httpRequest = util.promisify(request)
   const response = await httpRequest((proxyurl + pageUrl))
@@ -76,29 +75,6 @@ const getCredibilityScore = (domains, textCitationCount, totalCitationCount) => 
   const pageReliabilityPercentage = (pageReliabilityScore / (totalCitationCount * 5)) * 100
 
   return pageReliabilityPercentage
-}
-
-
-export const topTenAuthorContributionPercentage = (url) => {
-  // 1. Load under the 'url' package for proper parsing
-  const packagedUrl = new URL(url)
-  // 2. Get article name from pathanme by parsing
-    // Already joined by '_' from 'search.jsx'
-  const articleName = packagedUrl.pathname.split('/').slice(-1)[0]
-  // 3. Load it in the xtools wikipedia authorship statistics page
-  visitPage("https://xtools.wmflabs.org/authorship/en.wikipedia.org/" + articleName).then(res => {
-    const $2 = cheerio.load(res.body)
-
-    const top10AuthorsUsernames = $2('table.authorship-table td.sort-entry--username').slice(0, 10)
-      .map(function () { return $2(this).attr("data-value"); }).get()
-    
-    const top10AuthorsContributionPercentage = $2('table.authorship-table td.sort-entry--percentage').slice(0, 10)
-      .map(function () { return $2(this).attr("data-value"); }).get()
-    
-    const top10Authors = {}
-    top10AuthorsUsernames.forEach( (author, idx) => top10Authors[author] = top10AuthorsContributionPercentage[idx])
-    
-  })
 }
 
 export const processScore = (res) => {

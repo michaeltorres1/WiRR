@@ -1,0 +1,14 @@
+/* source : https://medium.com/@kj_schmidt/show-data-on-mouse-over-with-d3-js-3bf598ff8fc2 */
+div.tooltip-donut {
+     position: absolute;
+     text-align: center;
+     padding: .5rem;
+     background: #FFFFFF;
+     color: #313639;
+     border: 1px solid #313639;
+     border-radius: 8px;
+     pointer-events: none;
+     font-size: 0.9rem;
+     color: skyblue
+     /* Note : rem means that the font size is going to be relative to the parent */
+}

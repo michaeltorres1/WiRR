@@ -1,7 +1,7 @@
 import React from 'react';
-import { visitPage, processScore, topTenAuthorContributionPercentage } from './wirr';
-import { Link } from 'react-router-dom';
+import { visitPage, processScore } from './wirr';
 // import SearchResult from './search_result';
+import { Link } from 'react-router-dom';
 
 class WikiSearch extends React.Component {
   constructor(props) {
@@ -52,15 +52,21 @@ class WikiSearch extends React.Component {
           let articleUrl = "https://en.wikipedia.org/wiki/";
           articleUrl += result.title.split(' ').join('_');
           let score = "";
-
-          visitPage(articleUrl).then(res => {
+          
+          visitPage(articleUrl).then( res => {
             score = processScore(res);
             if (score !== NaN) {
               let prevResults = this.state.search_result;
               let thisResult = (
                 <div key={`result-${i}`} className="searchResult">
                   <h3 className="searchResult-title">
-                    <a href={`${articleUrl}`} target="_blank">{result.title}</a>
+                    
+                    <Link 
+                      to={{
+                        pathname: "/article/show",
+                        articleUrl: `${articleUrl}`}}>
+                      {result.title}
+                    </Link>
                     ({score} %)
                   </h3>
                   <br />
