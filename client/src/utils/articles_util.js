@@ -92,19 +92,42 @@ export const getReliabilityScore = (domains, textCitationCount, totalCitationCou
   return pageReliabilityPercentage
 }
 
+const getAllLinkCitations = ($) => {
+  // should get all citations from a give response
+    const allLinkCitations = $("li[id^='cite_note'] a[rel='nofollow']:first-child")
+    return allLinkCitations
+}
+
+const getAllCitations = ($) => {
+    const allCitations = $("li[id^='cite_note']")
+    return allCitations
+}
+
+const getTextCitationCount = (allCitationCount, allLinkCitationCount) => {
+  return allCitationCount - allLinkCitationCount;
+}
+
+const getAllCitationUrls = (allLinkCitations, $) => {
+  let allCitationUrls = [];
+
+  allLinkCitations.each(function () {
+    allCitationUrls.push($(this).attr('href'))
+  })
+
+  return allCitationUrls
+}
+
 export const processScore = (res) => {
+  // We want to grab all link citations
+  // grab all citations
   if (res.statusCode === 200) {
 
     const $ = cheerio.load(res.body)
 
-    const allATagCitations = $("li[id^='cite_note'] a[rel='nofollow']:first-child")
-    const allCitations = $("li[id^='cite_note']")
-    const textCitationCount = allCitations.length - allATagCitations.length
-    let allCitationUrls = [];
-
-    allATagCitations.each(function () {
-      allCitationUrls.push($(this).attr('href'))
-    })
+    const allLinkCitations = getAllLinkCitations($)
+    const allCitations = getAllCitations($)
+    const textCitationCount = getTextCitationCount(allCitations.length, allLinkCitations.length)
+    const allCitationUrls = getAllCitationUrls(allLinkCitations, $)
 
     const allDomains = getAllDomains(allCitationUrls)
 

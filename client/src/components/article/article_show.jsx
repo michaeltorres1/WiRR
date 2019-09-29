@@ -3,6 +3,8 @@ import { DonutGraph } from './charts/donut_graph';
 import RadarChart  from './charts/radar';
 import WikiSearchContainer from '../search/search_container';
 
+import { visitPage, getAllDomains, getReliabilityScore, processScore } from '../../utils/articles_util';
+
 export class ArticleShow extends React.Component {
     constructor(props) {
         super(props)
@@ -10,6 +12,10 @@ export class ArticleShow extends React.Component {
             articleUrl: props.location.articleUrl,
             articleTitle: props.location.articleTitle
         }
+    }
+
+    componentDidMount() {
+        
     }
 
     render() {
