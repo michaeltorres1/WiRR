@@ -7,7 +7,8 @@ export class ArticleShow extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            articleUrl: props.location.articleUrl
+            articleUrl: props.location.articleUrl,
+            articleTitle: props.location.articleTitle
         }
     }
 
@@ -17,7 +18,9 @@ export class ArticleShow extends React.Component {
                 <WikiSearchContainer />
                 <div className="article-show-charts">
                     <RadarChart />
-                    <DonutGraph articleUrl={this.state.articleUrl}/>
+                    <DonutGraph
+                        articleTitle={this.props.articleTitle}
+                        articleUrl={this.state.articleUrl}/>
                 </div>
             </div>
         )

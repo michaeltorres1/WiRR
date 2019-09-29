@@ -12,7 +12,7 @@ import Navbar from './layout/navbar';
 import Landing from './layout/landing';
 import Register from './auth/Register';
 import Login from './auth/Login';
-import { ArticleShow } from './article/article_show';
+import ArticleShowContainer from './article/article_show_container';
 import store from '../store';
 import { loadUser } from '../actions/auth';
 import setAuthToken from '../utils/setAuthToken';
@@ -43,7 +43,7 @@ const App = () => {
             <Switch>
               <Route exact path="/register" component={ Register } />
               <Route exact path="/login" component={ Login } />
-              <Route exact path="/article/show" component={ArticleShow} />
+              <Route exact path="/article/show" component={ArticleShowContainer} />
             </Switch>
           </section>
         </div>

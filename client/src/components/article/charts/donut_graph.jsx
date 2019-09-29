@@ -1,6 +1,7 @@
 import React from 'react';
 import * as d3 from 'd3';
 import { visitPage } from '../../../utils/wirr';
+
 let cheerio = require('cheerio')
 let URL = require('url-parse')
 
@@ -29,7 +30,7 @@ export class DonutGraph extends React.Component {
         const packagedUrl = new URL(url)
         // 2. Get article name from pathanme by parsing
         // (already joined by '_' from 'search.jsx')
-        const articleName = packagedUrl.pathname.split('/').slice(-1)[0]
+        const articleName = this.props.articleTitle
 
         // We are going to store top ten authors and their contributions here
         let topTenAuthors = {};

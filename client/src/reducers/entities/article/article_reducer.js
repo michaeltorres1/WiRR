@@ -4,7 +4,7 @@ import {
   RECEIVE_VISIT_PAGE
 } from '../../../actions/types';
 
-const articleReducer = (state = {}, action) => {
+export const articleReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState;
   switch (action.type) {
@@ -21,5 +21,3 @@ const articleReducer = (state = {}, action) => {
       return state;
   }
 }
-
-export default articleReducer;

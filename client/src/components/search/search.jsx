@@ -77,6 +77,7 @@ class WikiSearch extends React.Component {
                     <Link 
                       to={{
                         pathname: "/article/show",
+                        articleTitle: `${article.title}`,
                         articleUrl: `${articleUrl}`}}>
                       {title}
                     </Link>
