@@ -9,6 +9,7 @@
 :root {
   --primary-color: #17a2b8;
   --dark-color: #343a40;
+  --danger-color: #ff4444;
 }
 
 * {
@@ -207,6 +208,19 @@ button:focus {
 .password-input-register {
   width: 400px;
   text-align: center;
+}
+
+#alert-msg {
+  position: absolute;
+  padding: 0.7rem 2rem;
+  z-index: 6001;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ff4444;
+  text-align: center;
+  line-height: 2.5;
+  overflow: hidden;
 }
 
 /* different viewport support */
