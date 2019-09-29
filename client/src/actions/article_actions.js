@@ -38,8 +38,3 @@ export const searchDB = (keyword) => dispatch => ArticleUtil.searchDB(keyword)
     (article) => dispatch(receiveArticle(article)),
     (err) => dispatch(receiveArticleErrors(err))
   )
-
-export const visitPage = (pageUrl) => dispatch => ArticleUtil.visitPage(pageUrl)
-  .then(
-    (response) => dispatch(receiveVisitPage(response))
-  )

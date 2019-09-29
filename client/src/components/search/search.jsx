@@ -1,5 +1,5 @@
 import React from 'react';
-import { visitPage, processScore } from '../../utils/wirr';
+import { visitPage, processScore } from '../../utils/articles_util';
 import { Link } from 'react-router-dom';
 
 class WikiSearch extends React.Component {

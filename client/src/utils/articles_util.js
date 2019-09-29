@@ -62,7 +62,7 @@ export const getAllDomains = (urls) => {
   return allDomains
 }
 
-export const getCredibilityScore = (domains, textCitationCount, totalCitationCount) => {
+export const getReliabilityScore = (domains, textCitationCount, totalCitationCount) => {
   let pageReliabilityScore = 0;
 
   domains.forEach(domain => {
@@ -109,7 +109,7 @@ export const processScore = (res) => {
 
     const allDomains = getAllDomains(allCitationUrls)
 
-    let score = getCredibilityScore(allDomains, textCitationCount, allCitations.length);
+    let score = getReliabilityScore(allDomains, textCitationCount, allCitations.length);
     return `${score.toFixed(2)}`;
   }
 }

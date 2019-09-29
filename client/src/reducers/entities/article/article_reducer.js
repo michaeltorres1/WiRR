@@ -14,9 +14,6 @@ export const articleReducer = (state = {}, action) => {
       newState = Object.assign({}, state);
       delete newState[action.articleId];
       return newState;
-    case RECEIVE_VISIT_PAGE:
-      newState = Object.assign({}, state, action.response);
-      return newState;
     default:
       return state;
   }
