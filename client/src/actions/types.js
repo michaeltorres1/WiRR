@@ -7,3 +7,7 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
+
+export const RECEIVE_ARTICLE = 'RECEIVE_ARTICLE';
+export const DELETE_ARTICLE = 'DELETE_ARTICLE';
+export const RECEIVE_ARTICLE_ERRORS = 'RECEIVE_ARTICLE_ERRORS';
