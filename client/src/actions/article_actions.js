@@ -22,11 +22,6 @@ const receiveArticleErrors = (err) => ({
   err
 })
 
-const receiveVisitPage = (response) => ({
-  type: RECEIVE_VISIT_PAGE,
-  response
-})
-
 export const createArticle = (article) => dispatch => ArticleUtil.createArticle(article)
   .then(
     (article) => dispatch(receiveArticle(article)),

@@ -29,7 +29,6 @@ const util = require('util');
 
 export async function visitPage(pageUrl) {
   // The proxy url is used to allow Cross Origin Resource Sharing (CORS)
-  // TODO : Review if this exposes any security vulnerability
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
   const httpRequest = util.promisify(request)
