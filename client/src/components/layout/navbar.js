@@ -8,7 +8,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const aLinks = (
     <ul>
       <li className="nav-signup">
-        <a onClick={logout} href="#!">Logout</a>
+        <a onClick={logout} href="#">Logout</a>
       </li>
       <li className="dropdown-menu">
         <Link to="/"><i className="fas fa-bars"></i></Link>

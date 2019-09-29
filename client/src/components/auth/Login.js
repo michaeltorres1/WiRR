@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
+import Alert from '../layout/alert';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -32,6 +33,7 @@ const Login = ({ login, isAuthenticated }) => {
       <div className="dark-overlay">
         <div className="landing-inner">
           <h1>Please sign in</h1>
+          <Alert />
           <form className='form form-login' onSubmit={e => onSubmit(e)}>
             <div className='form-group'>
               <input

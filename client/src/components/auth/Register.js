@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { register } from '../../actions/auth';
+import { setAlert } from '../../actions/alert_action';
+import Alert from '../layout/alert';
 import PropTypes from 'prop-types';
 
-const Register = ({ register, isAuthenticated }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState ({
     name: '',
     email: '',
@@ -23,7 +25,7 @@ const Register = ({ register, isAuthenticated }) => {
     e.preventDefault();
 
     if (password !== password2) {
-      console.log("Invalid, passwords don't match!");
+      setAlert("Invalid, passwords don't match!", 'danger');
     } else {
       register({ name, email, password });
     }
@@ -38,6 +40,7 @@ const Register = ({ register, isAuthenticated }) => {
       <div className="dark-overlay">
         <div className="landing-inner">
           <h1> Please sign Up</h1>
+          <Alert />
           <form className='form form-register' onSubmit={e => onSubmit(e)}>
             <div className='form-group'>
               <input
@@ -89,6 +92,7 @@ const Register = ({ register, isAuthenticated }) => {
 };
 
 Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired
 };
 
@@ -98,5 +102,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { register }
+  { setAlert, register }
 )(Register);
