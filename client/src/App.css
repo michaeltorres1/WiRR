@@ -222,7 +222,7 @@ button:focus {
 
 .searchResults {
   max-height: 300px;
-  overflow: scroll;
+  overflow: auto;
   padding: 20px 0 50px;
   width: 642.891px;
   text-align: left;
@@ -331,7 +331,7 @@ button:focus {
     box-sizing: border-box;
     max-inline-size: fit-content;
     max-height: 300px;
-    overflow: scroll;
+    overflow: auto;
     padding: 20px 0 50px;
     width: 642.891px;
     text-align: left;
