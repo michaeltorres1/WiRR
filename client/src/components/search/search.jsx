@@ -53,7 +53,7 @@ class WikiSearch extends React.Component {
           visitPage(articleUrl).then( res => {
             // debugger;
             score = processScore(res);
-            if (score !== NaN) {
+            if (score !== 'NaN') {
               let title = result.title.replace(/<[^>]*>?/gm, '');
               let snippet = result.snippet.replace(/<[^>]*>?/gm, '');
               let description = "dummy description";

@@ -1,4 +1,4 @@
-import {RECEIVE_ARTICLE, DELETE_ARTICLE} from '../actions/types';
+import {RECEIVE_ARTICLE, DELETE_ARTICLE} from '../../../actions/types';
 
 const articleReducer = (state = {}, action) => {
   Object.freeze(state);

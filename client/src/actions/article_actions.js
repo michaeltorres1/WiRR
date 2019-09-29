@@ -1,4 +1,10 @@
-import {RECEIVE_ARTICLE, DELETE_ARTICLE, RECEIVE_ARTICLE_ERRORS} from './types';
+import {
+  RECEIVE_ARTICLE,
+  DELETE_ARTICLE,
+  RECEIVE_ARTICLE_ERRORS,
+  RECEIVE_VISIT_PAGE
+} from './types';
+
 import * as ArticleUtil from '../utils/articles_util';
 
 const receiveArticle = (article) => ({
@@ -16,6 +22,11 @@ const receiveArticleErrors = (err) => ({
   err
 })
 
+const receiveVisitPage = (response) => ({
+  type: RECEIVE_VISIT_PAGE,
+  response
+})
+
 export const createArticle = (article) => dispatch => ArticleUtil.createArticle(article)
   .then(
     (article) => dispatch(receiveArticle(article)),
@@ -26,4 +37,9 @@ export const searchDB = (keyword) => dispatch => ArticleUtil.searchDB(keyword)
   .then(
     (article) => dispatch(receiveArticle(article)),
     (err) => dispatch(receiveArticleErrors(err))
+  )
+
+export const visitPage = (pageUrl) => dispatch => ArticleUtil.visitPage(pageUrl)
+  .then(
+    (response) => dispatch(receiveVisitPage(response))
   )
