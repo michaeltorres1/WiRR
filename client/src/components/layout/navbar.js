@@ -1,3 +1,11 @@
+/*
+Author: Michael Torres
+Filename: navbar.js
+Description: This file is the component for the navbar across the website
+             and contains the website name, sign up and sign in links and
+             a hamburger menu when size desktop size is under 700 pixels
+*/
+
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -26,7 +34,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to="/login">Sign in</Link>
       </li>
       <li className="dropdown-menu">
-        <Link to="/"><i className="fas fa-bars"></i></Link>
+        <Link to="#">
+          <i className="fas fa-bars">
+            <div className="dropdown-content">
+              <Link to="/register">Sign up</Link>
+              <Link to="/login">Sign in</Link>
+            </div>
+          </i>
+        </Link>
       </li>
     </ul>
   );
