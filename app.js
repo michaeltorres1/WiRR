@@ -35,6 +35,8 @@ app.get('/', (req, res) => res.send('Connected!!!'));
 
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/users', require('./routes/api/register'));
+app.use('/api/articles', require('./routes/api/articles'));
+app.use('/api/articles/search', require('./routes/api/search'));
 
 const PORT = process.env.PORT || 5000
 

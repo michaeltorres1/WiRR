@@ -1,16 +1,11 @@
 import React from 'react';
-import { visitPage, processScore } from './wirr';
-// import SearchResult from './search_result';
+import { visitPage, processScore } from '../../utils/wirr';
 import { Link } from 'react-router-dom';
 
 class WikiSearch extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      search_text: '',
-      search_result: [],
-      score: '',
-    };
+    this.state = props.defaultFields;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -22,10 +17,12 @@ class WikiSearch extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.search();
+    // this.props.searchDB(this.state.search_text)
+    //   .then( res => console.log(res))
+    this.searchWiki();
   };
 
-  search() {
+  searchWiki() {
     let apiUrl = "https://en.wikipedia.org/w/api.php?origin=*";
     let searchParams = {
       // srsort: "relevance", // sort returned results by relevance (default: relevance)
@@ -33,7 +30,7 @@ class WikiSearch extends React.Component {
       action: "query",
       format: "json",
       list: "search",
-      srlimit: 5, // how many articles to return
+      srlimit: 10, // how many articles to return
       // srprop: "wordcount|timestamp|snippet|titlesnippet|sectiontitle|sectionsnippet|categorysnippet|contributors|categories",
       prop: "info",
       inprop: "url",
@@ -54,24 +51,40 @@ class WikiSearch extends React.Component {
           let score = "";
           
           visitPage(articleUrl).then( res => {
+            // debugger;
             score = processScore(res);
             if (score !== NaN) {
+              let title = result.title.replace(/<[^>]*>?/gm, '');
+              let snippet = result.snippet.replace(/<[^>]*>?/gm, '');
+              let description = "dummy description";
+              let category = ["cat1", "cat2"];
+              let references = ["ref1", "ref2"];
+              let article = {
+                "title": title,
+                "snippet": snippet,
+                "description": description,
+                "url": articleUrl,
+                "category": category,
+                "references": references,
+                "wirrScore": score
+              }
+              // this.props.createArticle(article);
+
               let prevResults = this.state.search_result;
               let thisResult = (
                 <div key={`result-${i}`} className="searchResult">
-                  <h3 className="searchResult-title">
-                    
+                  <h3 className="searchResult-title">                    
                     <Link 
                       to={{
                         pathname: "/article/show",
                         articleUrl: `${articleUrl}`}}>
-                      {result.title}
+                      {title}
                     </Link>
                     ({score} %)
                   </h3>
                   <br />
                   <div className="searchResult-snippet">
-                    {result.snippet}
+                    {snippet}
                   </div>
                 </div>
               )
@@ -89,7 +102,7 @@ class WikiSearch extends React.Component {
     // console.log(this.state)
     return(
       <div>
-        <form className='form' onClick={this.handleSubmit}>
+        <form className='form' onSubmit={this.handleSubmit}>
           <div className="form-group">
             <input
               type='text'
