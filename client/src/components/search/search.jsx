@@ -51,9 +51,9 @@ class WikiSearch extends React.Component {
           let score = "";
           
           visitPage(articleUrl).then( res => {
+            // debugger;
             score = processScore(res);
             if (score !== NaN) {
-              debugger;
               let title = result.title.replace(/<[^>]*>?/gm, '');
               let snippet = result.snippet.replace(/<[^>]*>?/gm, '');
               let description = "dummy description";
@@ -78,13 +78,13 @@ class WikiSearch extends React.Component {
                       to={{
                         pathname: "/article/show",
                         articleUrl: `${articleUrl}`}}>
-                      {result.title}
+                      {title}
                     </Link>
                     ({score} %)
                   </h3>
                   <br />
                   <div className="searchResult-snippet">
-                    {result.snippet}
+                    {snippet}
                   </div>
                 </div>
               )
