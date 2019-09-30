@@ -90,16 +90,39 @@ export class ArticleShow extends React.Component {
         })
     }
 
+    extractTop10AuthorsUsernames(top10Authors) {
+        debugger
+    }
+
+    fetchTop10AuthorsTotalLifetimeEdits() {
+        let apiUrl = "https://en.wikipedia.org/w/api.php?origin=*";
+        let searchParams = {
+            action: "query",
+            format: "json",
+            list: "users",
+            ususers: "",
+            usprop: "editcount"
+        }
+
+        Object.keys(searchParams).forEach((key) => {
+            apiUrl += "&" + key + "=" + searchParams[key];
+        });
+
+        fetch(apiUrl)
+            .then((response) => { return response.json(); })
+    }
+
     render() {
         return (
             <div className="article-show-page-container">
-                {/* <WikiSearchContainer />
+                <WikiSearchContainer />
                 <div className="article-show-charts">
                     <RadarChart domainCounts={this.state.domainCounts}/>
                     <DonutGraph
+                        extractTop10AuthorsUsernames={this.extractTop10AuthorsUsernames}
                         articleTitle={this.props.articleTitle}
                         articleUrl={this.state.articleUrl}/>
-                </div> */}
+                </div>
                 <BarChart />
             </div>
         )

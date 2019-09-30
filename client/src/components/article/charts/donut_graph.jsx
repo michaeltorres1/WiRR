@@ -55,6 +55,7 @@ export class DonutGraph extends React.Component {
             this.setState({
                 data: topTenAuthors
             })
+            this.props.extractTop10AuthorsUsernames(Object.keys(this.state.data).slice(0, Object.keys(this.state.data).length - 1))
         })
         .catch(err => {
             throw err
