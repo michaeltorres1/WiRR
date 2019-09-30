@@ -28,9 +28,13 @@ export class BarChart extends Component {
         const chart = svg.append('g')
             .attr('transform', `translate(${margin}, ${margin})`)
 
+        const dataValues = this.state.data.map(obj => {
+            return obj.value
+        })
+
         const yScale = d3.scaleLinear()
             .range([chartHeight, 0])
-            .domain([0, 100])
+            .domain([0, d3.max(dataValues)])
         chart.append('g')
             .attr('transform', `translate(0, ${-20})`)
             .call(d3.axisLeft(yScale))
