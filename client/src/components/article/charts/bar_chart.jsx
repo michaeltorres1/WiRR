@@ -60,6 +60,7 @@ export class BarChart extends Component {
         }
     }
 
+    // Inspired by : https://blog.risingstack.com/d3-js-tutorial-bar-charts-with-javascript/
     executeD3() {
         d3.select('svg').html('')
         const margin = 60;
@@ -101,6 +102,16 @@ export class BarChart extends Component {
             .attr('y', obj => yScale(obj.value))
             .attr('height', obj => chartHeight - yScale(obj.value) - 20)
             .attr('width', xScale.bandwidth())
+            .on('mouseover', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '0.7')
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1')
+            })
 
         chart.append('g')
             .attr('class', 'grid')
