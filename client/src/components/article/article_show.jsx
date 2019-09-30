@@ -7,8 +7,6 @@ import WikiSearchContainer from '../search/search_container';
 import { 
     visitPage,
     getAllDomains,
-    getReliabilityScore,
-    processScore,
     getAllLinkCitations,
     getAllCitations,
     getAllCitationUrls
