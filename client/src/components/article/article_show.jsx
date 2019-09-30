@@ -108,8 +108,8 @@ export class ArticleShow extends React.Component {
                 <div>
                     <DonutGraph
                         extractTop10AuthorsUsernames={this.extractTop10AuthorsUsernames}
-                        articleTitle={this.props.articleTitle}
-                        articleUrl={this.state.articleUrl}/>
+                        articleTitle={this.state.articleTitle}
+                        />
                 <div/>
                 <div>
                     {this.state.top10Authors.length > 0 ? <BarChart
