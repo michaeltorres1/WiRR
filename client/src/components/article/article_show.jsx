@@ -6,8 +6,10 @@ import WikiSearchContainer from '../search/search_container';
 export class ArticleShow extends React.Component {
     constructor(props) {
         super(props)
+        // debugger
         this.state = {
-            articleUrl: props.location.articleUrl
+            articleUrl: props.location.url,
+            articleTitle: props.location.title
         }
     }
 
@@ -17,7 +19,7 @@ export class ArticleShow extends React.Component {
                 <WikiSearchContainer />
                 <div className="article-show-charts">
                     <RadarChart />
-                    <DonutGraph articleUrl={this.state.articleUrl}/>
+                    <DonutGraph articleUrl={this.state.articleUrl} articleTitle={this.state.articleTitle}/>
                 </div>
             </div>
         )

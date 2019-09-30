@@ -17,8 +17,7 @@ class WikiSearch extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.searchDB(this.state.search_text)
-    //   .then( res => console.log(res))
+    this.setState({ search_result: [] });
     this.searchWiki();
   };
 
@@ -53,7 +52,7 @@ class WikiSearch extends React.Component {
           visitPage(articleUrl).then( res => {
             // debugger;
             score = processScore(res);
-            if (score !== NaN) {
+            if (score !== "NaN") {
               let title = result.title.replace(/<[^>]*>?/gm, '');
               let snippet = result.snippet.replace(/<[^>]*>?/gm, '');
               let description = "dummy description";
@@ -69,7 +68,7 @@ class WikiSearch extends React.Component {
                 "wirrScore": score
               }
               // this.props.createArticle(article);
-
+              this.state.search_articles.push(article);
               let prevResults = this.state.search_result;
               let thisResult = (
                 <div key={`result-${i}`} className="searchResult">
@@ -77,7 +76,9 @@ class WikiSearch extends React.Component {
                     <Link 
                       to={{
                         pathname: "/article/show",
-                        articleUrl: `${articleUrl}`}}>
+                        title: `${article.title}`,
+                        url: `${article.url}`,
+                      }}>
                       {title}
                     </Link>
                     ({score} %)
@@ -94,7 +95,6 @@ class WikiSearch extends React.Component {
           })
         })
       })
-
       .catch(function (error) { console.log(error); });
   }
 

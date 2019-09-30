@@ -7,6 +7,14 @@ const app = express();
 const mongoose = require('mongoose');
 const config = require('config');
 const db = config.get('mongoURI');
+const path = require('path');
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 // Connect to MongoDB
 const connectDB = async () => {
