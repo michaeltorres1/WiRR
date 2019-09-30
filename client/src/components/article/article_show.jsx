@@ -27,21 +27,25 @@ export class ArticleShow extends React.Component {
 
     componentDidMount() {
         visitPage(this.state.articleUrl).then( res => {
-            // set the state with domains and their respective counts
-            // utilize the functions from article_util.js
-            // 1. visit page
-            // 2. load the thing into cheerio
-            const $ = cheerio.load(res.body)
-            // 3. get all link citations
+            const $ = cheerio.load(res.body);
             const linkCitations = getAllLinkCitations($);
-            // 4. get the text citation count by getting all the citation
-                // counting them then substracting that count from the link citation count
             const allCitations = getAllCitations($);
-            const allTextCitationCount = allCitations.length - linkCitations.length
-            const allCitationUrls = getAllCitationUrls(linkCitations, $)
-            const allDomains = getAllDomains(allCitationUrls)
+            const allTextCitationCount = allCitations.length - linkCitations.length;
+            const allCitationUrls = getAllCitationUrls(linkCitations, $);
+            const allDomains = getAllDomains(allCitationUrls);
+            const updatedAllDomains = [];
+            let allTextCitationCount = 0;
 
-            
+            // count books.google.com as a text citation
+            allDomains.forEach(domain => {
+                if (domain != "books.google.com") {
+                    updatedAllDomains.push(domain)
+                } else {
+                    allTextCitationCount += 1
+                }
+            })
+
+
         })
     }
 
