@@ -63,6 +63,20 @@ export class BarChart extends Component {
                 .tickSize(-chartWidth, 0, 0)
                 .tickFormat(''))
             .attr('transform', `translate(0, ${-20})`)
+
+        svg.append('text')
+            .attr('x', -(chartHeight / 2) - margin)
+            .attr('y', margin / 2.4)
+            .attr('transform', 'rotate(-90)')
+            .attr('text-anchor', 'middle')
+            .text('Total lifetime contributions')
+
+        svg.append('text')
+            .attr('x', chartWidth / 2 + margin)
+            .attr('y', 25)
+            .attr('text-anchor', 'middle')
+            .text('Top 10 authors lifetime contributions')
+            
     }
 
     render() {
