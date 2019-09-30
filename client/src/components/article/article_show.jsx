@@ -24,8 +24,10 @@ export class ArticleShow extends React.Component {
                 'edu/gov': 0,
                 'org': 0,
                 'com/net': 0
-            }
+            },
+            top10Authors: []
         }
+        this.extractTop10AuthorsUsernames = this.extractTop10AuthorsUsernames.bind(this)
     }
 
     componentDidMount() {
@@ -91,39 +93,26 @@ export class ArticleShow extends React.Component {
     }
 
     extractTop10AuthorsUsernames(top10Authors) {
-        debugger
-    }
-
-    fetchTop10AuthorsTotalLifetimeEdits() {
-        let apiUrl = "https://en.wikipedia.org/w/api.php?origin=*";
-        let searchParams = {
-            action: "query",
-            format: "json",
-            list: "users",
-            ususers: "",
-            usprop: "editcount"
-        }
-
-        Object.keys(searchParams).forEach((key) => {
-            apiUrl += "&" + key + "=" + searchParams[key];
-        });
-
-        fetch(apiUrl)
-            .then((response) => { return response.json(); })
+        this.setState({
+            top10Authors
+        })
     }
 
     render() {
         return (
             <div className="article-show-page-container">
-                <WikiSearchContainer />
+                {/* <WikiSearchContainer /> */}
                 <div className="article-show-charts">
-                    <RadarChart domainCounts={this.state.domainCounts}/>
+                    {/* <RadarChart domainCounts={this.state.domainCounts}/> */}
                     <DonutGraph
                         extractTop10AuthorsUsernames={this.extractTop10AuthorsUsernames}
                         articleTitle={this.props.articleTitle}
                         articleUrl={this.state.articleUrl}/>
                 </div>
-                <BarChart />
+                <br/>
+                <br/>
+                {this.state.top10Authors.length > 0 ? <BarChart
+                    top10Authors={this.state.top10Authors} /> : null}
             </div>
         )
     }
