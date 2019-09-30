@@ -22,8 +22,8 @@ export class BarChart extends Component {
 
         const svg = d3.select('svg')
                       .style("background-color", 'pink')
-                      .attr('width', chartWidth)
-                      .attr('height', chartHeight)
+                      .attr('width', chartWidth + 100)
+                      .attr('height', chartHeight + 100)
 
         const chart = svg.append('g')
             .attr('transform', `translate(${margin}, ${margin})`)
@@ -32,7 +32,7 @@ export class BarChart extends Component {
             .range([chartHeight, 0])
             .domain([0, 100])
         chart.append('g')
-            .attr('transform', `translate(0, ${-100})`)
+            .attr('transform', `translate(0, ${-20})`)
             .call(d3.axisLeft(yScale))
 
         const xScale = d3.scaleBand()
@@ -40,8 +40,10 @@ export class BarChart extends Component {
             .domain(this.state.data.map(d => d.lang))
             .padding(0.2)
         chart.append('g')
-            .attr('transform', `translate(0, ${chartHeight - 100})`)
+            .attr('transform', `translate(0, ${chartHeight - 20})`)
             .call(d3.axisBottom(xScale))
+
+        
     }
 
     render() {
