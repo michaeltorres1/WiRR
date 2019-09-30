@@ -101,18 +101,21 @@ export class ArticleShow extends React.Component {
     render() {
         return (
             <div className="article-show-page-container">
-                {/* <WikiSearchContainer /> */}
+                <WikiSearchContainer />
                 <div className="article-show-charts">
-                    {/* <RadarChart domainCounts={this.state.domainCounts}/> */}
+                    <RadarChart domainCounts={this.state.domainCounts}/>
+                </div>
+                <div>
                     <DonutGraph
                         extractTop10AuthorsUsernames={this.extractTop10AuthorsUsernames}
                         articleTitle={this.props.articleTitle}
                         articleUrl={this.state.articleUrl}/>
+                <div/>
+                <div>
+                    {this.state.top10Authors.length > 0 ? <BarChart
+                        top10Authors={this.state.top10Authors} /> : null}
                 </div>
-                <br/>
-                <br/>
-                {this.state.top10Authors.length > 0 ? <BarChart
-                    top10Authors={this.state.top10Authors} /> : null}
+                </div>
             </div>
         )
     }
