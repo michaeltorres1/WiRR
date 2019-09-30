@@ -21,21 +21,16 @@ export class DonutGraph extends React.Component {
     }
 
     async componentDidMount() {
-        debugger
         this.topTenAuthorContributionPercentage()
         this.drawChart()
     }
 
     topTenAuthorContributionPercentage = () => {
-        // 2. Get article name from pathanme by parsing
-        // (already joined by '_' from 'search.jsx')
         const articleName = this.props.articleTitle
-
         // We are going to store top ten authors and their contributions here
         let topTenAuthors = {};
 
-        debugger
-        // 3. Load it in the xtools wikipedia authorship statistics page
+        // Load it in the xtools wikipedia authorship statistics page
         visitPage("https://xtools.wmflabs.org/authorship/en.wikipedia.org/" + articleName).then(res => {
             const $2 = cheerio.load(res.body)
 
@@ -50,7 +45,8 @@ export class DonutGraph extends React.Component {
             return topTenAuthors
         }).then( topTenAuthors => {
             let remainingPercentage = 100 - Object.values(topTenAuthors)
-                                            .reduce((accum, el) => accum + parseInt(el))
+                                            .map(el => parseFloat(el))
+                                            .reduce((accum, el) => accum + el)
            topTenAuthors = Object.assign(topTenAuthors, {others: remainingPercentage.toFixed(2)})
             this.setState({
                 data: topTenAuthors
