@@ -9,13 +9,6 @@ const config = require('config');
 const db = config.get('mongoURI');
 const path = require('path');
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('frontend/build'));
-  app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-  })
-}
-
 // Connect to MongoDB
 const connectDB = async () => {
   try {
@@ -47,5 +40,12 @@ app.use('/api/articles', require('./routes/api/articles'));
 app.use('/api/articles/search', require('./routes/api/search'));
 
 const PORT = process.env.PORT || 5000
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}
 
 app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
