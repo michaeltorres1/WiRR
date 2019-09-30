@@ -98,16 +98,16 @@ export class BarChart extends Component {
             .data(this.state.data)
             .enter()
             .append('rect')
-            .attr('x', obj => xScale(obj.name))
+            .attr('x', obj => xScale(obj.name) - 50)
             .attr('y', obj => yScale(obj.value))
             .attr('height', obj => chartHeight - yScale(obj.value) - 20)
             .attr('width', xScale.bandwidth())
-            .on('mouseover', function (d, i) {
+            .on('mouseover', function () {
                 d3.select(this).transition()
                     .duration('50')
                     .attr('opacity', '0.7')
             })
-            .on('mouseout', function (d, i) {
+            .on('mouseout', function () {
                 d3.select(this).transition()
                     .duration('50')
                     .attr('opacity', '1')
