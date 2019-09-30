@@ -9,7 +9,7 @@ const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+const config = require('../../config/keys.js');
 
 // @route     POST api/users/register
 // @desc      Register user
@@ -59,7 +59,7 @@ router.post(
       // TODO: Change expired time to 1 hr (36000) when deployed
       jwt.sign(
         data,
-        config.get('secretOrKey'),
+        config.secretOrKey,
         { expiresIn: 360000},
         (err, token) => {
           if (err) throw err;
