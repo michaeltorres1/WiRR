@@ -47,7 +47,14 @@ export class BarChart extends Component {
             .attr('transform', `translate(0, ${chartHeight - 20})`)
             .call(d3.axisBottom(xScale))
 
-        
+        chart.selectAll('rect')
+            .data(this.state.data)
+            .enter()
+            .append('rect')
+            .attr('x', obj => xScale(obj.lang))
+            .attr('y', obj => yScale(obj.value))
+            .attr('height', obj => chartHeight - yScale(obj.value) - 20)
+            .attr('width', xScale.bandwidth())
     }
 
     render() {
