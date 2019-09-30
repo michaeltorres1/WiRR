@@ -5,8 +5,8 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('mongoURI');
+const config = require('./config/keys.js');
+const db = config.mongoURI;
 const path = require('path');
 
 // Connect to MongoDB
