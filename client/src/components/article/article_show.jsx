@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import { DonutGraph } from './charts/donut_graph';
 import RadarChart  from './charts/radar';
 import WikiSearchContainer from '../search/search_container';
-
+import { BarChart } from './charts/bar_chart';
 import { 
     visitPage,
     getAllDomains,
@@ -93,13 +93,14 @@ export class ArticleShow extends React.Component {
     render() {
         return (
             <div className="article-show-page-container">
-                <WikiSearchContainer />
+                {/* <WikiSearchContainer />
                 <div className="article-show-charts">
                     <RadarChart domainCounts={this.state.domainCounts}/>
                     <DonutGraph
                         articleTitle={this.props.articleTitle}
                         articleUrl={this.state.articleUrl}/>
-                </div>
+                </div> */}
+                <BarChart />
             </div>
         )
     }
