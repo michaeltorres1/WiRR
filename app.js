@@ -32,8 +32,6 @@ connectDB();
 
 app.use(express.json({ extended: false }));
 
-app.get('/', (req, res) => res.send('Connected!!!'));
-
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/users', require('./routes/api/register'));
 app.use('/api/articles', require('./routes/api/articles'));
