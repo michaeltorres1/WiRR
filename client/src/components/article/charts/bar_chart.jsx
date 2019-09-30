@@ -55,6 +55,14 @@ export class BarChart extends Component {
             .attr('y', obj => yScale(obj.value))
             .attr('height', obj => chartHeight - yScale(obj.value) - 20)
             .attr('width', xScale.bandwidth())
+
+        chart.append('g')
+            .attr('class', 'grid')
+            .call(d3.axisLeft()
+                .scale(yScale)
+                .tickSize(-chartWidth, 0, 0)
+                .tickFormat(''))
+            .attr('transform', `translate(0, ${-20})`)
     }
 
     render() {
