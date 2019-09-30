@@ -10,12 +10,15 @@ export class ArticleShow extends React.Component {
         super(props)
         this.state = {
             articleUrl: props.location.articleUrl,
-            articleTitle: props.location.articleTitle
+            articleTitle: props.location.articleTitle,
+            DomainCounts: {}
         }
     }
 
     componentDidMount() {
-        
+        visitPage(this.state.articleUrl).then( res => {
+            
+        })
     }
 
     render() {

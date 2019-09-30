@@ -92,22 +92,22 @@ export const getReliabilityScore = (domains, textCitationCount, totalCitationCou
   return pageReliabilityPercentage
 }
 
-const getAllLinkCitations = ($) => {
+export const getAllLinkCitations = ($) => {
   // should get all citations from a give response
     const allLinkCitations = $("li[id^='cite_note'] a[rel='nofollow']:first-child")
     return allLinkCitations
 }
 
-const getAllCitations = ($) => {
+export const getAllCitations = ($) => {
     const allCitations = $("li[id^='cite_note']")
     return allCitations
 }
 
-const getTextCitationCount = (allCitationCount, allLinkCitationCount) => {
+export const getTextCitationCount = (allCitationCount, allLinkCitationCount) => {
   return allCitationCount - allLinkCitationCount;
 }
 
-const getAllCitationUrls = (allLinkCitations, $) => {
+export const getAllCitationUrls = (allLinkCitations, $) => {
   let allCitationUrls = [];
 
   allLinkCitations.each(function () {
