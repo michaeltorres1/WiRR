@@ -83,7 +83,7 @@ export class BarChart extends Component {
             .range([chartHeight, 0])
             .domain([0, d3.max(dataValues)])
         chart.append('g')
-            .attr('transform', `translate(0, ${-20})`)
+            .attr('transform', `translate(30, ${-20})`)
             .call(d3.axisLeft(yScale))
 
         const xScale = d3.scaleBand()
@@ -91,7 +91,7 @@ export class BarChart extends Component {
             .domain(this.state.data.map(d => d.name))
             .padding(0.2)
         chart.append('g')
-            .attr('transform', `translate(0, ${chartHeight - 20})`)
+            .attr('transform', `translate(30, ${chartHeight - 20})`)
             .call(d3.axisBottom(xScale))
 
         chart.selectAll('rect')
@@ -119,7 +119,7 @@ export class BarChart extends Component {
                 .scale(yScale)
                 .tickSize(-chartWidth, 0, 0)
                 .tickFormat(''))
-            .attr('transform', `translate(0, ${-20})`)
+            .attr('transform', `translate(30, ${-20})`)
 
         svg.append('text')
             .attr('x', -(chartHeight / 2) - margin)
