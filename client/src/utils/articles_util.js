@@ -103,10 +103,6 @@ export const getAllCitations = ($) => {
     return allCitations
 }
 
-export const getTextCitationCount = (allCitationCount, allLinkCitationCount) => {
-  return allCitationCount - allLinkCitationCount;
-}
-
 export const getAllCitationUrls = (allLinkCitations, $) => {
   let allCitationUrls = [];
 
@@ -126,7 +122,7 @@ export const processScore = (res) => {
 
     const allLinkCitations = getAllLinkCitations($)
     const allCitations = getAllCitations($)
-    const textCitationCount = getTextCitationCount(allCitations.length, allLinkCitations.length)
+    const textCitationCount = allCitations.length - allLinkCitations.length
     const allCitationUrls = getAllCitationUrls(allLinkCitations, $)
 
     const allDomains = getAllDomains(allCitationUrls)
