@@ -95,7 +95,7 @@ export class ArticleShow extends React.Component {
             <div className="article-show-page-container">
                 <WikiSearchContainer />
                 <div className="article-show-charts">
-                    <RadarChart />
+                    <RadarChart domainCounts={this.state.domainCounts}/>
                     <DonutGraph
                         articleTitle={this.props.articleTitle}
                         articleUrl={this.state.articleUrl}/>
