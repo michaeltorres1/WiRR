@@ -129,7 +129,6 @@ export class BarChart extends Component {
         this.executeD3()
         return (
             <div>
-                <h2>This is a basic bar chart</h2>
                 <svg>
                 </svg>
             </div>
