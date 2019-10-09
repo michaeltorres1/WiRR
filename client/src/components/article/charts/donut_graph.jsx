@@ -86,16 +86,6 @@ export class DonutGraph extends React.Component {
             .attr("class", "tooltip-donut")
             .style("opacity", 0);
 
-        const svg2 = d3.select('#author_contribution_percentage_per_article').append('svg')
-                        .attr('width', this.width)
-                        .attr('heighht', this.height)
-                        .append('g')
-                        .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')')
-
-        svg2.append('text')
-            .attr('dy', '0.35em')
-            .text('something')
-
         const path = svg
             .selectAll('path')
             .attr('class', 'donut-graph-svg')
@@ -110,6 +100,7 @@ export class DonutGraph extends React.Component {
             .attr('stroke', 'black')
             .style('stroke-width', '2px')
             .attr('opacity', 1)
+            .attr("transform", "translate(" + -this.state.width / 5 + "," + 0 + ")")
 
             .on('mouseover', function (d, i) {
                 d3.select(this).transition()
@@ -149,7 +140,7 @@ export class DonutGraph extends React.Component {
                 let offset = height * color.domain().length / 2;
                 let horz = 15 * legendRectSize - 13;
                 let vert = i * height - offset;
-                return 'translate(' + horz + ',' + vert + ')';
+                return 'translate(' + horz / 3 + ',' + vert + ')';
             });
 
         legend.append('circle') //keys
