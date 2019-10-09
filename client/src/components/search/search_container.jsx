@@ -6,6 +6,7 @@ const mstp = (state, ownProps) => {
   const defaultFields = {
     search_text: '',
     search_result: [],
+    search_articles: [],
     score: '',
   };
   return  {article: state.article, defaultFields}

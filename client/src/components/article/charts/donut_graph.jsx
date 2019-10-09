@@ -36,7 +36,7 @@ export class DonutGraph extends React.Component {
         let topTenAuthors = {};
 
         // 3. Load it in the xtools wikipedia authorship statistics page
-        visitPage("https://xtools.wmflabs.org/authorship/en.wikipedia.org/" + articleName).then(res => {
+        visitPage("https://xtools.wmflabs.org/authorship/en.wikipedia.org/" + this.props.articleTitle).then(res => {
             const $2 = cheerio.load(res.body)
 
             const authorsUsernames = $2('table.authorship-table td.sort-entry--username').slice(0, 10)

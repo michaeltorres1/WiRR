@@ -16,6 +16,7 @@ import {
 export class ArticleShow extends React.Component {
     constructor(props) {
         super(props)
+        // debugger
         this.state = {
             articleUrl: props.location.articleUrl,
             articleTitle: props.location.articleTitle,
