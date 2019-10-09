@@ -77,15 +77,18 @@ class WikiSearch extends React.Component {
               let prevResults = this.state.search_result;
               let thisResult = (
                 <div key={`result-${i}`} className="searchResult">
-                  <h3 className="searchResult-title">                    
+                  <h3 className="searchResult-title">                 
                     <Link 
                       to={{
                         pathname: "/article/show",
                         articleTitle: `${article.title}`,
+                        articleScore: `${article.wirrScore}`,
+                        articleWordCount: `${article.wordCount}`,
+                        articleLastUpdated: `${article.lastUpdated}`,
                         articleUrl: `${articleUrl}`}}>
                       {title}
                     </Link>
-                    ({score} %)
+                    &nbsp;({score} %)
                   </h3>
                   <br />
                   <div className="searchResult-snippet">
