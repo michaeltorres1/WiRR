@@ -1,5 +1,5 @@
 import React from 'react';
-import { visitPage, processScore } from '../../utils/wirr';
+import { visitPage, processScore } from '../../utils/articles_util';
 import { Link } from 'react-router-dom';
 
 class WikiSearch extends React.Component {
@@ -28,10 +28,11 @@ class WikiSearch extends React.Component {
       // srqiprofile: "popular_inclinks_pv", // ranking based on page views
       action: "query",
       format: "json",
-      list: "search",
+      list: "search|users",
       srlimit: 10, // how many articles to return
       // srprop: "wordcount|timestamp|snippet|titlesnippet|sectiontitle|sectionsnippet|categorysnippet|contributors|categories",
-      prop: "info",
+      prop: "info|contributors",
+      ususerids: "",
       inprop: "url",
       srsearch: this.state.search_text
     }
@@ -53,8 +54,8 @@ class WikiSearch extends React.Component {
             // debugger;
             score = processScore(res);
             if (score !== "NaN") {
-              let title = result.title.replace(/<[^>]*>?/gm, '');
-              let snippet = result.snippet.replace(/<[^>]*>?/gm, '');
+              let title = result.title.replace(/<[^>]*>?/gm, "");
+              let snippet = result.snippet.replace(/<[^>]*>?/gm, "");
               let description = "dummy description";
               let category = ["cat1", "cat2"];
               let references = ["ref1", "ref2"];
@@ -67,7 +68,7 @@ class WikiSearch extends React.Component {
                 "references": references,
                 "wirrScore": score
               }
-              // this.props.createArticle(article);
+              this.props.createArticle(article);
               this.state.search_articles.push(article);
               let prevResults = this.state.search_result;
               let thisResult = (
@@ -76,9 +77,8 @@ class WikiSearch extends React.Component {
                     <Link 
                       to={{
                         pathname: "/article/show",
-                        title: `${article.title}`,
-                        url: `${article.url}`,
-                      }}>
+                        articleTitle: `${article.title}`,
+                        articleUrl: `${articleUrl}`}}>
                       {title}
                     </Link>
                     ({score} %)
