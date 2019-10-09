@@ -18,7 +18,7 @@ import { loadUser } from '../actions/auth';
 import setAuthToken from '../utils/setAuthToken';
 
 // Stylesheets (CSS)
-import '../App.css';
+import '../stylesheets/app.css';
 import '../stylesheets/article_show.css'
 import '../stylesheets/charts.css';
 import '../stylesheets/donut_graph.css';

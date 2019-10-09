@@ -108,37 +108,43 @@ export class ArticleShow extends React.Component {
 
                 </div>
                 <div className="article-url">
-                    <a href={this.state.articleUrl}>{this.state.articleUrl}</a>
+                    <a href={this.state.articleUrl} target="_blank">{this.state.articleUrl}</a>
                 </div>
                 <div className="divider"></div>
                 <div className="content-main-container">
-                    <div className="article-info-container">
-                        <div className="article-info-title">
-                            Article Trivia Info
-                    </div>
-                        <div>
-                            Total word count: {this.state.articleWordCount}
+                    <div className="content-left">
+                        <div className="article-info-container">
+                            <div className="article-info-title">
+                                Article Trivia Info
+                            </div>
+                            <div>
+                                Total word count: {this.state.articleWordCount}
+                            </div>
+                            <div>
+                                Last updated on: {this.state.articleLastUpdated}
+                            </div>
                         </div>
-                        <div>
-                            Last updated on: {this.state.articleLastUpdated}
+                        <div className="divider"></div>
+                        <div className="score-info-container">
+                            <div className="score-info-title">Scoring Info</div>
+                            <div>
+                                This Wikipedia's article reliability rating scores a score of {this.state.articleScore}. The score is calculated based on the types of references used in this article. Here is a break down of references:
+                            </div>
+                            <div className="content-ref">Number of books/text references: {this.state.domainCounts.books_text}</div>
+                            <div className="content-ref">Number of edu/gov website references: {this.state.domainCounts.edu_gov}</div>
+                            <div className="content-ref">Number of org website references: {this.state.domainCounts.org}</div>
+                            <div className="content-ref">Number of com/net website references: {this.state.domainCounts.com_net}</div>
                         </div>
                     </div>
-                    <div className="divider"></div>
-                    <div className="score-info-container">
-                        <div className="score-info-title">Scoring Info</div>
-                        <div>
-                            This Wikipedia's article reliability rating scores a score of {this.state.articleScore}. The score is calculated based on the types of references used in this article. Here is a break down of references:
-                    </div>
-                        <div>Number of books/text references: {this.state.domainCounts.books_text}</div>
-                        <div>Number of edu/gov website references: {this.state.domainCounts.edu_gov}</div>
-                        <div>Number of org website references: {this.state.domainCounts.org}</div>
-                        <div>Number of com/net website references: {this.state.domainCounts.com_net}</div>
-                    </div>
-                    <div className="article-show-charts">
+                    <div className="content-right">
+                        {/* <div className="radar-chart">
                         <RadarChart domainCounts={this.state.domainCounts} />
-                        <DonutGraph
-                            articleTitle={this.state.articleTitle}
-                            articleUrl={this.state.articleUrl} />
+                        </div> */}
+                        <div className="donut-chart">
+                            <DonutGraph
+                                articleTitle={this.state.articleTitle}
+                                articleUrl={this.state.articleUrl} />
+                        </div>
                     </div>
                 </div>
             </div>

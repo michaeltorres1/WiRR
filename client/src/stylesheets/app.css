@@ -342,6 +342,6 @@ button:focus {
 html {
   height: 100%;
   font-family: 'Grenze', serif;
-  background: url('./img/background-dark.png') no-repeat center center/cover;
+  background: url('../img/background-dark.png') no-repeat center center/cover;
   /* background-color: lightgoldenrodyellow; */
 }
