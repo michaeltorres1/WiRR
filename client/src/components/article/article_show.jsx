@@ -20,11 +20,14 @@ export class ArticleShow extends React.Component {
         this.state = {
             articleUrl: props.location.articleUrl,
             articleTitle: props.location.articleTitle,
+            articleScore: props.location.articleScore,
+            articleWordCount: props.location.articleWordCount,
+            articleLastUpdated: props.location.articleLastUpdated,
             domainCounts: {
-                'books/text': 0,
-                'edu/gov': 0,
+                'books_text': 0,
+                'edu_gov': 0,
                 'org': 0,
-                'com/net': 0
+                'com_net': 0
             }
         }
     }
@@ -59,29 +62,29 @@ export class ArticleShow extends React.Component {
                 // if net or com or anything else then pair
                 // Go through and format as needed
                 const domainCounts = { 
-                    'books/text': 0,
-                    'edu/gov': 0,
+                    'books_text': 0,
+                    'edu_gov': 0,
                     'org': 0,
-                    'com/net': 0
+                    'com_net': 0
                 }
 
                 updatedAllDomains.forEach( domain => {
                     switch (domain) {
                         case 'edu':
                         case 'gov':
-                            domainCounts['edu/gov'] += 4;
+                            domainCounts['edu_gov'] += 4;
                             break;
                         case 'org':
                             domainCounts['org'] += 3;
                             break;
                         default:
-                            domainCounts['com/net'] += 1;
+                            domainCounts['com_net'] += 1;
                             break;
                     }
                 })
 
                 for (let i = 0; i < allTextCitationCount; i++) {
-                    domainCounts['books/text'] += 5
+                    domainCounts['books_text'] += 5
                 }
 
                 that.setState({
@@ -95,11 +98,48 @@ export class ArticleShow extends React.Component {
         return (
             <div className="article-show-page-container">
                 <WikiSearchContainer />
-                <div className="article-show-charts">
-                    <RadarChart domainCounts={this.state.domainCounts}/>
-                    <DonutGraph
-                        articleTitle={this.props.articleTitle}
-                        articleUrl={this.state.articleUrl}/>
+                <div className="article-header-container">
+                    <div className="article-title">                    
+                        {this.state.articleTitle}
+                    </div>
+                    <div className="article-score">
+                        &nbsp;({this.state.articleScore}%)
+                    </div>
+
+                </div>
+                <div className="article-url">
+                    <a href={this.state.articleUrl}>{this.state.articleUrl}</a>
+                </div>
+                <div className="divider"></div>
+                <div className="content-main-container">
+                    <div className="article-info-container">
+                        <div className="article-info-title">
+                            Article Trivia Info
+                    </div>
+                        <div>
+                            Total word count: {this.state.articleWordCount}
+                        </div>
+                        <div>
+                            Last updated on: {this.state.articleLastUpdated}
+                        </div>
+                    </div>
+                    <div className="divider"></div>
+                    <div className="score-info-container">
+                        <div className="score-info-title">Scoring Info</div>
+                        <div>
+                            This Wikipedia's article reliability rating scores a score of {this.state.articleScore}. The score is calculated based on the types of references used in this article. Here is a break down of references:
+                    </div>
+                        <div>Number of books/text references: {this.state.domainCounts.books_text}</div>
+                        <div>Number of edu/gov website references: {this.state.domainCounts.edu_gov}</div>
+                        <div>Number of org website references: {this.state.domainCounts.org}</div>
+                        <div>Number of com/net website references: {this.state.domainCounts.com_net}</div>
+                    </div>
+                    <div className="article-show-charts">
+                        <RadarChart domainCounts={this.state.domainCounts} />
+                        <DonutGraph
+                            articleTitle={this.state.articleTitle}
+                            articleUrl={this.state.articleUrl} />
+                    </div>
                 </div>
             </div>
         )

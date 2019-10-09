@@ -4,7 +4,7 @@
 //               current logged in user
 
 const jwt = require('jsonwebtoken');
-const config = require('config');
+const config = require('../config/keys.js');
 
 module.exports = function(req, res, next) {
   // Get token from header
@@ -17,7 +17,7 @@ module.exports = function(req, res, next) {
 
   // if there is a token
   try {
-    const decodedToken = jwt.verify(token, config.get('secretOrKey'));
+    const decodedToken = jwt.verify(token, config.secretOrKey);
     req.user = decodedToken.user;
     next();
   } catch (err) {
