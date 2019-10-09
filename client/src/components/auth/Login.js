@@ -12,16 +12,20 @@ const Login = ({ login, isAuthenticated }) => {
   });
 
   const { email, password } = formData;
-
+  
   const onChange = e => setFormData({
     ...formData,
     [e.target.name]: e.target.value
   });
-
+  
   const onSubmit = e => {
     e.preventDefault();
+
+    if ("" in formData) {
+      login ('demo@gmail.com', 'password');
+    }
+    
     login(email, password);
-    console.log('Logged in');
   }
 
   if (isAuthenticated) {
@@ -56,6 +60,7 @@ const Login = ({ login, isAuthenticated }) => {
               />
             </div>
             <input type='submit' className='btn btn-primary' value='Login' />
+            <input type='submit' onClick={e => onChange(e)} className='btn btn-primary' value='DEMO' />
             <p> or <Link to="/register" className="signup-or-signin">Sign Up</Link></p>
           </form>
           </div>
