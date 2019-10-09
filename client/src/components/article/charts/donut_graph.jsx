@@ -86,6 +86,17 @@ export class DonutGraph extends React.Component {
             .attr("class", "tooltip-donut")
             .style("opacity", 0);
 
+        const svg2 = d3.select('#author_contribution_percentage_per_article').append('svg')
+                        .attr('width', this.width)
+                        .attr('heighht', this.height)
+                        .append('g')
+                        .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')')
+
+        svg2.append('text')
+            .attr('class', 'donut-graph-middle')
+            .attr('dy', '0.35em')
+            .text('something')
+
         const path = svg
             .selectAll('path')
             .attr('class', 'donut-graph-svg')
