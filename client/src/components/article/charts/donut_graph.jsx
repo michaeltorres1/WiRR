@@ -93,7 +93,6 @@ export class DonutGraph extends React.Component {
                         .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')')
 
         svg2.append('text')
-            .attr('class', 'donut-graph-middle')
             .attr('dy', '0.35em')
             .text('something')
 
