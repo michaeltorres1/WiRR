@@ -24,5 +24,15 @@ WiRR is an application to help determine the reliability of a given Wikipedia's 
   - The reliability index scoring factors will be visualize using D3/Chart.js library
   - The visualization will take the form of pie charts, radar charts and bar graphs
 
+# Screenshots
+## Landing page
+<img src="./client/src/img/landing-page.jpg">
+
+## Register page
+<img src="./client/src/img/register-page.jpg">
+
+## Login page
+<img src="./client/src/img/login-page.jpg">
+
 # Future Implementations/Features
   - Ability for user to save favorite articles
