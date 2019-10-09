@@ -68,7 +68,7 @@ export class BarChart extends Component {
         const chartHeight = 600 - 2 * margin
 
         const svg = d3.select('svg')
-                      .style("background-color", 'pink')
+                      .style("background-color", 'skyblue')
                       .attr('width', chartWidth + 100)
                       .attr('height', chartHeight + 100)
 
