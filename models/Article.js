@@ -13,7 +13,9 @@ let ArticleSchema = new Schema({
   //   username: {type: String, required: true},
   //   totalContributions: { type: String, required: true },
   // },
+  wordCount: {type: Number, require: true},
   wirrScore: {type: Number, required: true},
+  lastUpdated: {type: String, required: true}
 })
 
 module.exports = Article = mongoose.model('Article', ArticleSchema);

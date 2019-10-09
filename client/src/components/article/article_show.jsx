@@ -92,13 +92,25 @@ export class ArticleShow extends React.Component {
     }
 
     render() {
-        console.log(this.state.articleTitle)
         return (
             <div className="article-show-page-container">
                 <WikiSearchContainer />
-                <div className="articleTitle">                    
-                    {this.state.articleTitle}
+                <div className="article-header-container">
+                    <div className="article-title">                    
+                        {this.state.articleTitle}
+                    </div>
+                    <div className="article-url">
+                        <a href={this.state.articleUrl}>{this.state.articleUrl}</a>
+                    </div>
                 </div>
+                
+                <div className="article-info-container">
+                    <div className="info-title">
+                        Article Trivia Info:
+                    </div>
+                    
+                </div>
+
                 <div className="article-show-charts">
                     <RadarChart domainCounts={this.state.domainCounts}/>
                     <DonutGraph

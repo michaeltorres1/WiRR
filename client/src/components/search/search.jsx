@@ -30,11 +30,11 @@ class WikiSearch extends React.Component {
       format: "json",
       list: "search|users",
       srlimit: 10, // how many articles to return
-      // srprop: "wordcount|timestamp|snippet|titlesnippet|sectiontitle|sectionsnippet|categorysnippet|contributors|categories",
-      prop: "info|contributors",
+      prop: "info|contributors|revisions",
       ususerids: "",
       inprop: "url",
       srsearch: this.state.search_text
+      // srprop: "wordcount|timestamp|snippet|titlesnippet|sectiontitle|sectionsnippet|categorysnippet|contributors|categories",
     }
 
     Object.keys(searchParams).forEach((key) => {
@@ -56,6 +56,8 @@ class WikiSearch extends React.Component {
             if (score !== "NaN") {
               let title = result.title.replace(/<[^>]*>?/gm, "");
               let snippet = result.snippet.replace(/<[^>]*>?/gm, "");
+              let wordCount = result.wordcount;
+              let timestamp = result.timestamp.slice(0,10);
               let description = "dummy description";
               let category = ["cat1", "cat2"];
               let references = ["ref1", "ref2"];
@@ -66,7 +68,9 @@ class WikiSearch extends React.Component {
                 "url": articleUrl,
                 "category": category,
                 "references": references,
-                "wirrScore": score
+                "wirrScore": score,
+                "wordCount": wordCount,
+                "lastUpdated": timestamp
               }
               this.props.createArticle(article);
               this.state.search_articles.push(article);

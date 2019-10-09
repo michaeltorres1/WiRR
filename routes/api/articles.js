@@ -28,6 +28,8 @@ articleRoutes.post('/', (req, res) => {
     category: req.body.category,
     references: req.body.references,
     wirrScore: req.body.wirrScore,
+    wordCount: req.body.wordCount,
+    lastUpdated: req.body.lastUpdated
   })
 
   newArticle.save()

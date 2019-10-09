@@ -36,7 +36,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div>
+        <div className="main">
           <Navbar />
           <Route exact path="/" component= { Landing } />
           <section className="container">
