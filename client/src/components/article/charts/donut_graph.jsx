@@ -152,7 +152,7 @@ export class DonutGraph extends React.Component {
         legend.append('text') //labels
             .attr('x', legendRectSize + legendSpacing)
             .attr('y', legendRectSize - legendSpacing)
-            .style('fill', 'black')
+            .style('fill', 'white')
             .text(function (d) {
                 return d;
             })
