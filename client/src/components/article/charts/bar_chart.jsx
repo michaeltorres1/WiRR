@@ -119,11 +119,12 @@ export class BarChart extends Component {
             .text(function (d) {
                 return d.value
             })
+            .attr('x', function (d, i) {
+                // return xScale.bandwidth() * i + margin + 50
+                return xScale(d.name) + xScale.bandwidth() + 30
+            })
             .attr('y', function (d) {
                 return yScale(d.value) + margin - 10
-            })
-            .attr('x', function (_, i) {
-                return xScale.bandwidth() * i + margin + 50
             })
             .style('fill', 'pink')
 
