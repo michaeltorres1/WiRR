@@ -34,7 +34,6 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <section className="landing">
-      <div className="dark-overlay">
         <div className="landing-inner">
           <h1>Please sign in</h1>
           <Alert />
@@ -64,7 +63,6 @@ const Login = ({ login, isAuthenticated }) => {
             <p> or <Link to="/register" className="signup-or-signin">Sign Up</Link></p>
           </form>
           </div>
-        </div>
     </section>
   );
 };

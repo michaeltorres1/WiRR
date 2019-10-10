@@ -4,7 +4,6 @@ import WikiSearchContainer from '../../components/search/search_container';
 const Landing = () => {
   return (
     <section className="landing">
-      <div className="dark-overlay">
         <div className="landing-inner">
           <h1 className="x-large">Wikipedia Reliability Rater</h1>
           <p className="lead">
@@ -14,7 +13,6 @@ const Landing = () => {
           <div className="buttons">
             <WikiSearchContainer />
           </div>
-        </div>
       </div>
     </section>
   )
