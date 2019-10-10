@@ -101,7 +101,7 @@ export class DonutGraph extends React.Component {
             .attr('stroke', 'black')
             .style('stroke-width', '2px')
             .attr('opacity', 1)
-            .attr("transform", "translate(" + -this.state.width / 4.5 + "," + -this.state.height / 100 + ")")
+            .attr("transform", "translate(" + -this.state.width / 9 + "," + -this.state.height / 100 + ")")
 
             .on('mouseover', function (d, i) {
                 d3.select(this).transition()
@@ -144,7 +144,7 @@ export class DonutGraph extends React.Component {
                 let offset = height * color.domain().length / 2;
                 let horz = 15 * legendRectSize - 13;
                 let vert = i * height - offset;
-                return 'translate(' + horz / 6 + ',' + vert + ')';
+                return 'translate(' + horz / 2 + ',' + vert + ')';
             });
 
         legend.append('circle') //keys
