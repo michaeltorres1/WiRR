@@ -46,15 +46,13 @@ export class BarChart extends Component {
                     const top10AuthorsLifetimeContributions = []
                     let userObj;
                     data.query.users.map(user => {
-                        if (user.invalid) {
-                            // do nothing
-                        } else {
+                        if (!user.invalid) {
                             userObj = { name: user.name, value: user.editcount }
                             top10AuthorsLifetimeContributions.push(userObj)
                         }
                     })
                     that.setState({
-                        data: top10AuthorsLifetimeContributions
+                        data: top10AuthorsLifetimeContributions.slice(1, top10AuthorsLifetimeContributions.length)
                     })
                 })
         }
@@ -74,8 +72,8 @@ export class BarChart extends Component {
         const chart = svg.append('g')
             .attr('transform', `translate(${margin}, ${margin})`)
 
-        const dataValues = this.state.data.map(obj => {
-            return obj.value
+        const dataValues = this.state.data.map(d => {
+            return d.value
         })
 
         const yScale = d3.scaleLinear()
@@ -108,22 +106,26 @@ export class BarChart extends Component {
             .data(this.state.data)
             .enter()
             .append('rect')
-            .attr('x', obj => xScale(obj.name) - 50)
+            .attr('x', obj => xScale(obj.name) + 30)
             .attr('y', obj => yScale(obj.value))
             .attr('height', obj => chartHeight - yScale(obj.value) - 20)
             .attr('width', xScale.bandwidth())
             .attr("fill", 'cyan')
-            
-            .on('mouseover', function () {
-                d3.select(this).transition()
-                    .duration('50')
-                    .attr('opacity', '0.7')
+
+        svg.selectAll('labelText')
+            .data(this.state.data)
+            .enter()
+            .append('text')
+            .text(function (d) {
+                return d.value
             })
-            .on('mouseout', function () {
-                d3.select(this).transition()
-                    .duration('50')
-                    .attr('opacity', '1')
+            .attr('y', function (d) {
+                return yScale(d.value) + margin - 10
             })
+            .attr('x', function (_, i) {
+                return xScale.bandwidth() * i + margin + 50
+            })
+            .style('fill', 'pink')
 
             
 
