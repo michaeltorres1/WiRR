@@ -13,8 +13,8 @@ export class DonutGraph extends React.Component {
         this.state = {
             data: { "loading...": 10, "please...": 10, "wait...": 10 },
             margin: 40,
-            width: 700,
-            height: 450
+            width: 600,
+            height: 350
         }
         this.topTenAuthorContributionPercentage = this.topTenAuthorContributionPercentage.bind(this)
         this.drawChart = this.drawChart.bind(this)
@@ -93,14 +93,14 @@ export class DonutGraph extends React.Component {
             .enter()
             .append('path')
             .attr('d', d3.arc()
-                .innerRadius(100)
+                .innerRadius(70)
                 .outerRadius(radius)
             )
             .attr('fill', function (d) { return (color(d.data.key)) })
             .attr('stroke', 'black')
             .style('stroke-width', '2px')
             .attr('opacity', 1)
-            .attr("transform", "translate(" + -this.state.width / 5 + "," + 0 + ")")
+            .attr("transform", "translate(" + -this.state.width / 4.5 + "," + 0 + ")")
 
             .on('mouseover', function (d, i) {
                 d3.select(this).transition()
@@ -128,7 +128,7 @@ export class DonutGraph extends React.Component {
         // Legend styling inspired by : https://medium.com/@kj_schmidt/making-an-animated-donut-chart-with-d3-js-17751fde4679
         // vvvvvvvvvvvvv
         let legendRectSize = 15;
-        let legendSpacing = 5;
+        let legendSpacing = 9;
 
         let legend = svg.selectAll('.legend')
             .data(color.domain())
@@ -140,7 +140,7 @@ export class DonutGraph extends React.Component {
                 let offset = height * color.domain().length / 2;
                 let horz = 15 * legendRectSize - 13;
                 let vert = i * height - offset;
-                return 'translate(' + horz / 3 + ',' + vert + ')';
+                return 'translate(' + horz / 6 + ',' + vert + ')';
             });
 
         legend.append('circle') //keys
@@ -148,10 +148,11 @@ export class DonutGraph extends React.Component {
             .style('stroke', color)
             .attr('cx', 0)
             .attr('cy', 0)
-            .attr('r', '.5rem');
+            .attr('r', '.4rem');
         legend.append('text') //labels
             .attr('x', legendRectSize + legendSpacing)
             .attr('y', legendRectSize - legendSpacing)
+            .attr('font-size', 20)
             .style('fill', 'white')
             .text(function (d) {
                 return d;
