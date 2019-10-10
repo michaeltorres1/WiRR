@@ -112,7 +112,8 @@ export class BarChart extends Component {
             .attr('y', obj => yScale(obj.value))
             .attr('height', obj => chartHeight - yScale(obj.value) - 20)
             .attr('width', xScale.bandwidth())
-            .attr("fill", '#3F729B')
+            .attr("fill", 'cyan')
+            
             .on('mouseover', function () {
                 d3.select(this).transition()
                     .duration('50')
