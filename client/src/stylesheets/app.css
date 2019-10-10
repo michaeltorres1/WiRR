@@ -33,6 +33,11 @@ ul {
   list-style: none;
 }
 
+h1 {
+  font-size: 35px;
+  font-weight: bold;
+}
+
 .x-large {
   font-size: 4rem;
   line-height: 1.2;
@@ -87,14 +92,14 @@ ul {
   opacity: 0.8;
 }
 
-.dark-overlay {
+/* .dark-overlay {
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
+} */
 
 .form .form-group {
   margin: 1.2rem 0;
@@ -170,7 +175,6 @@ button:focus {
 
 .landing {
   position: relative;
-  /* background: url('./img/dark-data.jpg') no-repeat center center/cover; */
   height: 100vh;
 }
 
@@ -252,6 +256,11 @@ button:focus {
 
 .searchResult-snippet, .searchResult-link {
   color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
 }
 
 /* different viewport support */
@@ -342,6 +351,9 @@ button:focus {
 html {
   height: 100%;
   font-family: 'Grenze', serif;
-  background: url('./img/background-dark.png') no-repeat center center/cover;
-  /* background-color: lightgoldenrodyellow; */
+  background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4) ), url('../img/background-dark.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
