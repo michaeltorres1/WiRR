@@ -50,7 +50,7 @@ export class DonutGraph extends React.Component {
             return topTenAuthors
         }).then(topTenAuthors => {
             let remainingPercentage = 100 - Object.values(topTenAuthors)
-                .reduce((accum, el) => accum + parseInt(el))
+                .reduce((accum, el) => Number(accum) + Number(el))
             topTenAuthors = Object.assign(topTenAuthors, { others: remainingPercentage.toFixed(2) })
             this.setState({
                 data: topTenAuthors
@@ -104,7 +104,7 @@ export class DonutGraph extends React.Component {
 
             .on('mouseover', function (d, i) {
                 d3.select(this).transition()
-                    .duration('50')
+                    .duration('200')
                     .attr('opacity', '0.5')
                 div.transition()
                     .duration(300)
