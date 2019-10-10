@@ -94,6 +94,17 @@ export class BarChart extends Component {
             .attr('transform', `translate(30, ${chartHeight - 20})`)
             .call(d3.axisBottom(xScale))
 
+        chart.append('g')
+            .attr('class', 'grid')
+            .call(d3.axisLeft()
+                .scale(yScale)
+                .tickSize(-chartWidth, 0, 0)
+                .tickFormat(''))
+            .attr('transform', `translate(30, ${-20})`)
+            .attr('stroke', 'blue')
+            .attr('stroke-width', 1)
+            .attr('fill', 'none')
+
         chart.selectAll('rect')
             .data(this.state.data)
             .enter()
@@ -114,13 +125,7 @@ export class BarChart extends Component {
                     .attr('opacity', '1')
             })
 
-        chart.append('g')
-            .attr('class', 'grid')
-            .call(d3.axisLeft()
-                .scale(yScale)
-                .tickSize(-chartWidth, 0, 0)
-                .tickFormat(''))
-            .attr('transform', `translate(30, ${-20})`)
+            
 
         svg.append('text')
             .attr('x', -(chartHeight / 2) - margin)
