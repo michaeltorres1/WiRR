@@ -1,0 +1,359 @@
+/* //////////////////////////////////////////////////////////////////////////
+  Author: Michael Torres
+  Filename: App.css
+  Description: css for the navbar and landing page and to make page reponsive
+               on different viewports
+  //////////////////////////////////////////////////////////////////////////
+*/
+
+:root {
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --danger-color: #ff4444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  /* background-color: #fff; */
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.x-large {
+  font-size: 4rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn {
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin-top: 1.1rem;
+  margin-bottom: 1.1rem;
+  outline: none;
+}
+
+.btn-primary, .dummy {
+  height: 44px;
+  margin-top: 18.5px;
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+#radar {
+  /* border: 3px solid orange; */
+  width: 100%;
+  height: 100%;
+}
+
+.bg-dark {
+  background: var(--dark-color);
+}
+
+.btn:hover {
+  background: #4285F4;
+  opacity: 0.8;
+}
+
+/* .dark-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+} */
+
+.form .form-group {
+  margin: 1.2rem 0;
+}
+
+.form {
+  display: flex;
+}
+
+.wiki-eval-input {
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  outline: none;
+  width: 520px;
+}
+
+.form input[type='text'],
+.form input[type='submit'],
+.form input[type='email'],
+.form input[type='password'],
+.signup-or-signin,
+.password-login
+button {
+  font: inherit;
+  border-radius: 100px;
+}
+
+.form input[type='text']:focus,
+.form input[type='submit']:focus,
+.form input[type='email']:focus,
+.form input[type='password']:focus,
+.signup-or-signin:focus,
+.password-login:focus
+button:focus {
+  outline: none;
+  background: #b1bace;
+}
+
+.form-login, .form-register {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px var(--primary-color);
+  opacity: 0.7;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color: #fff;
+  padding: 0.45rem;
+  margin: 0 0.25rem;
+}
+
+.navbar a:hover {
+  color: var(--primary-color);
+}
+
+.landing {
+  position: relative;
+  height: 100vh;
+}
+
+.landing-inner {
+  color: #fff;
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+.signup-or-signin {
+  text-decoration: none;
+  color: white;
+}
+
+.signup-or-signin:hover {
+  color: var(--primary-color);
+}
+
+.email-input,
+.password-input,
+.name-input-register,
+.password-input-register {
+  width: 400px;
+  text-align: center;
+}
+
+#alert-msg {
+  position: absolute;
+  padding: 0.7rem 2rem;
+  z-index: 6001;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ff4444;
+  text-align: center;
+  line-height: 2.5;
+  overflow: hidden;
+}
+
+.searchResults {
+  max-height: 300px;
+  overflow: auto;
+  padding: 20px 0 50px;
+  width: 642.891px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.searchResult {
+  margin-bottom: 20px;
+  color: white;
+  border-radius: 2px;
+  padding: 10px;
+  width: 100%;
+}
+
+.searchResult-title {
+  margin-bottom: 4px;
+}
+
+.searchResult-title a {
+  color: white;
+  text-decoration: none;
+}
+
+.searchResult-title a:hover {
+  text-decoration: underline;
+}
+
+.searchResult-snippet, .searchResult-link {
+  color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+/* different viewport support */
+@media (max-width: 700px) {
+  .container {
+    margin-top: 0rem;
+  }
+  
+  .x-large {
+    font-size: 3rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .dropdown-menu {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: relative;
+  }
+
+  .dropdown-menu:hover .dropdown-content {
+    display: block;
+    float: left;
+  }
+
+  .fa-bars::after {
+    visibility: hidden;
+  }
+
+  .nav-signup {
+    display: none;
+  }
+
+  .nav-signin {
+    display: none;
+  }
+
+  .navbar {
+    display: flex;
+    text-align: center;
+  }
+
+  .navbar ul {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .navbar h1 {
+    margin-bottom: 1rem;
+  }
+
+  .wiki-eval-input {
+    padding: 0.4rem 1.3rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    outline: none;
+    width: 260px;
+  }
+
+  .form {
+    display: inline-flex;
+  }
+
+  #root {
+    width: inherit;
+  }
+
+  .searchResults {
+    box-sizing: border-box;
+    max-inline-size: fit-content;
+    max-height: 300px;
+    overflow: auto;
+    padding: 20px 0 50px;
+    width: 642.891px;
+    text-align: left;
+    font-size: 1rem;
+  }
+}
+
+html {
+  height: 100%;
+  font-family: 'Grenze', serif;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4) ), url('../img/background-dark.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}

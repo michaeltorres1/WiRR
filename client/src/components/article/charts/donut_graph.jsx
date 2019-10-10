@@ -6,15 +6,15 @@ let cheerio = require('cheerio')
 let URL = require('url-parse')
 
 // Inspired by : https://www.d3-graph-gallery.com/graph/donut_basic.html
-              // https://medium.com/@kj_schmidt/show-data-on-mouse-over-with-d3-js-3bf598ff8fc2
+// https://medium.com/@kj_schmidt/show-data-on-mouse-over-with-d3-js-3bf598ff8fc2
 export class DonutGraph extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: {"loading...": 10, "please...": 10, "wait...": 10},
+            data: { "loading...": 10, "please...": 10, "wait...": 10 },
             margin: 40,
-            width: 700,
-            height: 450
+            width: 600,
+            height: 350
         }
         this.topTenAuthorContributionPercentage = this.topTenAuthorContributionPercentage.bind(this)
         this.drawChart = this.drawChart.bind(this)
@@ -30,8 +30,8 @@ export class DonutGraph extends React.Component {
         // We are going to store top ten authors and their contributions here
         let topTenAuthors = {};
 
-        // Load it in the xtools wikipedia authorship statistics page
-        visitPage("https://xtools.wmflabs.org/authorship/en.wikipedia.org/" + articleName).then(res => {
+        // 3. Load it in the xtools wikipedia authorship statistics page
+        visitPage("https://xtools.wmflabs.org/authorship/en.wikipedia.org/" + this.props.articleTitle).then(res => {
             const $2 = cheerio.load(res.body)
 
             const authorsUsernames = $2('table.authorship-table td.sort-entry--username').slice(0, 10)
@@ -43,30 +43,30 @@ export class DonutGraph extends React.Component {
             authorsUsernames.forEach((author, idx) => topTenAuthors[author] = authorsContributionPercentage[idx]);
 
             return topTenAuthors
-        }).then( topTenAuthors => {
+        }).then(topTenAuthors => {
             let remainingPercentage = 100 - Object.values(topTenAuthors)
-                                            .map(el => parseFloat(el))
-                                            .reduce((accum, el) => accum + el)
-           topTenAuthors = Object.assign(topTenAuthors, {others: remainingPercentage.toFixed(2)})
+                .reduce((accum, el) => Number(accum) + Number(el))
+            topTenAuthors = Object.assign(topTenAuthors, { others: remainingPercentage.toFixed(2) })
             this.setState({
                 data: topTenAuthors
             })
             this.props.extractTop10AuthorsUsernames(Object.keys(this.state.data).slice(0, Object.keys(this.state.data).length - 1))
         })
-        .catch(err => {
-            throw err
-        })
+            .catch(err => {
+                throw err
+            })
     }
 
     drawChart() {
-        d3.select("#author_contribution_percentage_per_article").html("")
+        d3.select("#donut_graph_div").html("")
         const radius = Math.min(this.state.width, this.state.height) / 2 - this.state.margin
-        let svg = d3.select("#author_contribution_percentage_per_article")
+        let svg = d3.select("#donut_graph_div")
             .append("svg")
+            .attr('class', 'article-show-donut-graph')
             .attr("width", this.state.width)
             .attr("height", this.state.height)
             .append("g")
-            .attr("transform", "translate(" + this.state.width / 2 + "," + this.state.height / 2 + ")");
+            .attr("transform", "translate(" + this.state.width / 2 + "," + this.state.height / 2 + ")")
 
         let color = d3.scaleOrdinal()
             .domain(this.state.data)
@@ -90,26 +90,26 @@ export class DonutGraph extends React.Component {
             .enter()
             .append('path')
             .attr('d', d3.arc()
-                .innerRadius(100)
+                .innerRadius(70)
                 .outerRadius(radius)
             )
             .attr('fill', function (d) { return (color(d.data.key)) })
-            .attr('stroke', 'black')
-            .style('stroke-width', '2px')
+            .attr('stroke', 'ghostwhite')
+            .style('stroke-width', '1px')
             .attr('opacity', 1)
+            .attr("transform", "translate(" + -this.state.width / 9 + "," + -this.state.height / 100 + ")")
 
             .on('mouseover', function (d, i) {
                 d3.select(this).transition()
-                    .duration('50')
+                    .duration('200')
                     .attr('opacity', '0.5')
                 div.transition()
-                    .duration(50)
+                    .duration(300)
                     .style('opacity', 1)
-
                 // vvv This shows value of arc on mouseover
-                div.html(`${d.value}%`)
-                    .style('left', (d3.event.pageX + 10) + "px")
-                    .style('top', (d3.event.pageY - 15) + "px")
+                div.html(`${d.data.key}: ${d.value}%`)
+                    .style('left', (d3.event.pageX + 15) + "px")
+                    .style('top', (d3.event.pageY - 20) + "px")
             })
 
             .on('mouseout', function (d, i) {
@@ -121,10 +121,13 @@ export class DonutGraph extends React.Component {
                     .style('opacity', 0)
             })
 
+
+        
+
         // Legend styling inspired by : https://medium.com/@kj_schmidt/making-an-animated-donut-chart-with-d3-js-17751fde4679
         // vvvvvvvvvvvvv
         let legendRectSize = 15;
-        let legendSpacing = 5;
+        let legendSpacing = 9;
 
         let legend = svg.selectAll('.legend')
             .data(color.domain())
@@ -136,7 +139,7 @@ export class DonutGraph extends React.Component {
                 let offset = height * color.domain().length / 2;
                 let horz = 15 * legendRectSize - 13;
                 let vert = i * height - offset;
-                return 'translate(' + horz + ',' + vert + ')';
+                return 'translate(' + horz / 2 + ',' + vert + ')';
             });
 
         legend.append('circle') //keys
@@ -144,11 +147,12 @@ export class DonutGraph extends React.Component {
             .style('stroke', color)
             .attr('cx', 0)
             .attr('cy', 0)
-            .attr('r', '.5rem');
+            .attr('r', '.4rem');
         legend.append('text') //labels
             .attr('x', legendRectSize + legendSpacing)
             .attr('y', legendRectSize - legendSpacing)
-            .style('fill', 'black')
+            .attr('font-size', 20)
+            .style('fill', 'white')
             .text(function (d) {
                 return d;
             })
@@ -158,8 +162,9 @@ export class DonutGraph extends React.Component {
     render() {
         this.drawChart()
         return (
-            <div>
-                <div id="author_contribution_percentage_per_article">
+            <div className="donut-graph-container">
+                <p>Top 10 Author Percentage Contribution (+ Others)</p>
+                <div id="donut_graph_div">
                 </div>
             </div>
         )

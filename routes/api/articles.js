@@ -27,11 +27,14 @@ articleRoutes.post('/', (req, res) => {
     url: req.body.url,
     category: req.body.category,
     references: req.body.references,
-    // lastUpdated: req.lastUpdated,
     wirrScore: req.body.wirrScore,
+    wordCount: req.body.wordCount,
+    lastUpdated: req.body.lastUpdated
   })
 
-  newArticle.save().then(article => res.json(article));
+  newArticle.save()
+    .then(article => res.json(article))
+    .catch(err => res.json(err));
 })
 
 // articleRoutes.get('/search/:keyword', (req, res) => {

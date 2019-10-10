@@ -62,13 +62,13 @@ export class BarChart extends Component {
 
     // Inspired by : https://blog.risingstack.com/d3-js-tutorial-bar-charts-with-javascript/
     executeD3() {
-        d3.select('svg').html('')
+        d3.select('#bar_chart_svg').html('')
         const margin = 60;
         const chartWidth = 1000 - 2 * margin
         const chartHeight = 600 - 2 * margin
 
-        const svg = d3.select('svg')
-                      .style("background-color", 'skyblue')
+        const svg = d3.select('#bar_chart_svg')
+                      .style("background-color", '#1c2331')
                       .attr('width', chartWidth + 100)
                       .attr('height', chartHeight + 100)
 
@@ -102,6 +102,7 @@ export class BarChart extends Component {
             .attr('y', obj => yScale(obj.value))
             .attr('height', obj => chartHeight - yScale(obj.value) - 20)
             .attr('width', xScale.bandwidth())
+            .attr("fill", '#3F729B')
             .on('mouseover', function () {
                 d3.select(this).transition()
                     .duration('50')
@@ -127,12 +128,14 @@ export class BarChart extends Component {
             .attr('transform', 'rotate(-90)')
             .attr('text-anchor', 'middle')
             .text('Total lifetime contributions')
+            .attr('fill', 'white')
 
         svg.append('text')
             .attr('x', chartWidth / 2 + margin)
             .attr('y', 25)
             .attr('text-anchor', 'middle')
             .text('Top 10 authors lifetime contributions')
+            .attr('fill', 'white')
 
     }
 
@@ -140,7 +143,7 @@ export class BarChart extends Component {
         this.executeD3()
         return (
             <div>
-                <svg>
+                <svg id="bar_chart_svg">
                 </svg>
             </div>
         )

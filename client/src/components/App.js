@@ -18,7 +18,8 @@ import { loadUser } from '../actions/auth';
 import setAuthToken from '../utils/setAuthToken';
 
 // Stylesheets (CSS)
-import '../App.css';
+import '../stylesheets/css_reset.css';
+import '../stylesheets/app.css';
 import '../stylesheets/article_show.css'
 import '../stylesheets/charts.css';
 import '../stylesheets/donut_graph.css';
@@ -36,7 +37,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div>
+        <div className="main">
           <Navbar />
           <Route exact path="/" component= { Landing } />
           <section className="container">

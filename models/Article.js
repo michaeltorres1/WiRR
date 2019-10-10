@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let ArticleSchema = new Schema({
-  title: {type: String, required: true},
+  title: {type: String, required: true, unique: true},
   snippet: {type: String, required: true},
   description: {type: String, required: true},
   url: {type: String, required: true},
@@ -13,7 +13,9 @@ let ArticleSchema = new Schema({
   //   username: {type: String, required: true},
   //   totalContributions: { type: String, required: true },
   // },
+  wordCount: {type: Number, require: true},
   wirrScore: {type: Number, required: true},
+  lastUpdated: {type: String, required: true}
 })
 
 module.exports = Article = mongoose.model('Article', ArticleSchema);
