@@ -117,16 +117,16 @@ export class BarChart extends Component {
             .enter()
             .append('text')
             .text(function (d) {
-                return d.value
+                // Number format source : https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+                return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             })
             .attr('x', function (d, i) {
-                // return xScale.bandwidth() * i + margin + 50
-                return xScale(d.name) + xScale.bandwidth() + 30
+                return xScale(d.name) + xScale.bandwidth() + 28
             })
             .attr('y', function (d) {
-                return yScale(d.value) + margin - 10
+                return yScale(d.value) + margin - 15
             })
-            .style('fill', 'pink')
+            .style('fill', 'skyblue')
 
             
 
