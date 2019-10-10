@@ -107,13 +107,13 @@ export class DonutGraph extends React.Component {
                     .duration('50')
                     .attr('opacity', '0.5')
                 div.transition()
-                    .duration(50)
+                    .duration(300)
                     .style('opacity', 1)
 
                 // vvv This shows value of arc on mouseover
                 div.html(`${d.value}%`)
-                    .style('left', (d3.event.pageX + 10) + "px")
-                    .style('top', (d3.event.pageY - 15) + "px")
+                    .style('left', (d3.event.pageX + 15) + "px")
+                    .style('top', (d3.event.pageY - 20) + "px")
             })
 
             .on('mouseout', function (d, i) {
