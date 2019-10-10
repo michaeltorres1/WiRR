@@ -98,8 +98,8 @@ export class DonutGraph extends React.Component {
                 .outerRadius(radius)
             )
             .attr('fill', function (d) { return (color(d.data.key)) })
-            .attr('stroke', 'black')
-            .style('stroke-width', '2px')
+            .attr('stroke', 'ghostwhite')
+            .style('stroke-width', '1px')
             .attr('opacity', 1)
             .attr("transform", "translate(" + -this.state.width / 9 + "," + -this.state.height / 100 + ")")
 
@@ -110,9 +110,8 @@ export class DonutGraph extends React.Component {
                 div.transition()
                     .duration(300)
                     .style('opacity', 1)
-
                 // vvv This shows value of arc on mouseover
-                div.html(`${d.value}%`)
+                div.html(`${d.data.key}: ${d.value}%`)
                     .style('left', (d3.event.pageX + 15) + "px")
                     .style('top', (d3.event.pageY - 20) + "px")
             })
