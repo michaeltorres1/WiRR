@@ -16,19 +16,7 @@ import {
 export class ArticleShow extends React.Component {
     constructor(props) {
         super(props)
-        // this.state = {
-        //     articleUrl: props.location.articleUrl,
-        //     articleTitle: props.location.articleTitle,
-        //     articleScore: props.location.articleScore,
-        //     articleWordCount: props.location.articleWordCount,
-        //     articleLastUpdated: props.location.articleLastUpdated,
-        //     domainCounts: {
-        //         'books_text': 0,
-        //         'edu_gov': 0,
-        //         'org': 0,
-        //         'com_net': 0
-        //     }
-        // }
+
         const article = JSON.parse(window.localStorage.getItem(props.match.params.id));
         this.state = {
             'articleUrl': article['url'],
@@ -44,8 +32,6 @@ export class ArticleShow extends React.Component {
             }
         }
 
-        console.log(this.state);
-        console.log(article);
     }
 
     componentDidMount() {

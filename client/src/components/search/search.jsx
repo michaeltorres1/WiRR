@@ -48,7 +48,6 @@ class WikiSearch extends React.Component {
           let score = "";
           
           visitPage(articleUrl).then( res => {
-            // debugger;
             score = processScore(res);
             if (score !== "NaN") {
               let title = result.title.replace(/<[^>]*>?/gm, "");
@@ -105,7 +104,6 @@ class WikiSearch extends React.Component {
   }
 
   render() {
-    // console.log(this.state)
     return(
       <div>
         <form className='form' onSubmit={this.handleSubmit}>

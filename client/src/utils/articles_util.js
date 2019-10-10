@@ -12,8 +12,6 @@ import * as URL from 'url-parse'
 
 
 export const createArticle = (article) => {
-  // const body = JSON.stringify({article});
-  // debugger;
   return (
     axios.post('/api/articles/', article)
   )
