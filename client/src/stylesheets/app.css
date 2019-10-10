@@ -175,7 +175,6 @@ button:focus {
 
 .landing {
   position: relative;
-  /* background: url('./img/dark-data.jpg') no-repeat center center/cover; */
   height: 100vh;
 }
 
@@ -257,6 +256,11 @@ button:focus {
 
 .searchResult-snippet, .searchResult-link {
   color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
 }
 
 /* different viewport support */

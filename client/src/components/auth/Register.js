@@ -37,7 +37,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   return (
     <section className="landing">
-      <div className="dark-overlay">
         <div className="landing-inner">
           <h1> Please sign Up</h1>
           <Alert />
@@ -86,7 +85,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           </form>
           <p> or <Link to="/login" className="signup-or-signin">Sign In</Link></p>
         </div>
-      </div>
     </section>
   );
 };
