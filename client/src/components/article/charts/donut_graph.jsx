@@ -66,6 +66,7 @@ export class DonutGraph extends React.Component {
         const radius = Math.min(this.state.width, this.state.height) / 2 - this.state.margin
         let svg = d3.select("#author_contribution_percentage_per_article")
             .append("svg")
+            .attr('class', 'article-show-donut-graph')
             .attr("width", this.state.width)
             .attr("height", this.state.height)
             .append("g")
@@ -100,7 +101,7 @@ export class DonutGraph extends React.Component {
             .attr('stroke', 'black')
             .style('stroke-width', '2px')
             .attr('opacity', 1)
-            .attr("transform", "translate(" + -this.state.width / 4.5 + "," + this.state.height / 9 + ")")
+            .attr("transform", "translate(" + -this.state.width / 4.5 + "," + -this.state.height / 100 + ")")
 
             .on('mouseover', function (d, i) {
                 d3.select(this).transition()
@@ -126,14 +127,7 @@ export class DonutGraph extends React.Component {
             })
 
 
-        svg.append("text")
-            .attr("x", (this.state.width / 2))
-            .attr("y", 0 - (this.state.margin / 2))
-            .attr("text-anchor", "middle")
-            .style("font-size", "16px")
-            .style("color", "white")
-            .style("text-decoration", "underline")
-            .text("Value vs Date Graph")
+        
 
         // Legend styling inspired by : https://medium.com/@kj_schmidt/making-an-animated-donut-chart-with-d3-js-17751fde4679
         // vvvvvvvvvvvvv
@@ -157,11 +151,11 @@ export class DonutGraph extends React.Component {
             .style('fill', color)
             .style('stroke', color)
             .attr('cx', 0)
-            .attr('cy', 50)
+            .attr('cy', 0)
             .attr('r', '.4rem');
         legend.append('text') //labels
             .attr('x', legendRectSize + legendSpacing)
-            .attr('y', legendRectSize - legendSpacing + 50)
+            .attr('y', legendRectSize - legendSpacing)
             .attr('font-size', 20)
             .style('fill', 'white')
             .text(function (d) {
@@ -173,7 +167,8 @@ export class DonutGraph extends React.Component {
     render() {
         this.drawChart()
         return (
-            <div>
+            <div className="donut-graph-container">
+                <p>Top 10 Author Percentage Contribution (+ Others)</p>
                 <div id="author_contribution_percentage_per_article">
                 </div>
             </div>

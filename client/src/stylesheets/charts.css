@@ -1,3 +1,7 @@
 .article-show-charts {
     display: flex;
 }
+
+.donut-graph-container {
+    text-align: center;
+}
