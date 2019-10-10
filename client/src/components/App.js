@@ -18,6 +18,7 @@ import { loadUser } from '../actions/auth';
 import setAuthToken from '../utils/setAuthToken';
 
 // Stylesheets (CSS)
+import '../stylesheets/css_reset.css';
 import '../stylesheets/app.css';
 import '../stylesheets/article_show.css'
 import '../stylesheets/charts.css';

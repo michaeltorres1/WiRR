@@ -97,7 +97,7 @@ export class ArticleShow extends React.Component {
     render() {
         return (
             <div className="article-show-page-container">
-                <WikiSearchContainer />
+                {/* <WikiSearchContainer /> */}
                 <div className="article-header-container">
                     <div className="article-title">                    
                         {this.state.articleTitle}
