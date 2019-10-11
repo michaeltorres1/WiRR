@@ -24,8 +24,6 @@ class WikiSearch extends React.Component {
   searchWiki() {
     let apiUrl = "https://en.wikipedia.org/w/api.php?origin=*";
     let searchParams = {
-      // srsort: "relevance", // sort returned results by relevance (default: relevance)
-      // srqiprofile: "popular_inclinks_pv", // ranking based on page views
       action: "query",
       format: "json",
       list: "search|users",
@@ -34,7 +32,6 @@ class WikiSearch extends React.Component {
       ususerids: "",
       inprop: "url",
       srsearch: this.state.search_text
-      // srprop: "wordcount|timestamp|snippet|titlesnippet|sectiontitle|sectionsnippet|categorysnippet|contributors|categories",
     }
 
     Object.keys(searchParams).forEach((key) => {
@@ -51,7 +48,6 @@ class WikiSearch extends React.Component {
           let score = "";
           
           visitPage(articleUrl).then( res => {
-            // debugger;
             score = processScore(res);
             if (score !== "NaN") {
               let title = result.title.replace(/<[^>]*>?/gm, "");
@@ -75,17 +71,19 @@ class WikiSearch extends React.Component {
               this.props.createArticle(article);
               this.state.search_articles.push(article);
               let prevResults = this.state.search_result;
+              window.localStorage.setItem(title, JSON.stringify(article));
               let thisResult = (
                 <div key={`result-${i}`} className="searchResult">
                   <h3 className="searchResult-title">                 
                     <Link 
                       to={{
-                        pathname: "/article/show",
-                        articleTitle: `${article.title}`,
-                        articleScore: `${article.wirrScore}`,
-                        articleWordCount: `${article.wordCount}`,
-                        articleLastUpdated: `${article.lastUpdated}`,
-                        articleUrl: `${articleUrl}`}}>
+                        pathname: `/article/show/${title}`
+                        // articleTitle: `${article.title}`
+                        // articleScore: `${article.wirrScore}`,
+                        // articleWordCount: `${article.wordCount}`,
+                        // articleLastUpdated: `${article.lastUpdated}`,
+                        // articleUrl: `${articleUrl}`
+                        }}>
                       {title}
                     </Link>
                     &nbsp;({score} %)
@@ -106,7 +104,6 @@ class WikiSearch extends React.Component {
   }
 
   render() {
-    // console.log(this.state)
     return(
       <div>
         <form className='form' onSubmit={this.handleSubmit}>

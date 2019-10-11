@@ -16,20 +16,22 @@ import {
 export class ArticleShow extends React.Component {
     constructor(props) {
         super(props)
-        // debugger
+
+        const article = JSON.parse(window.localStorage.getItem(props.match.params.id));
         this.state = {
-            articleUrl: props.location.articleUrl,
-            articleTitle: props.location.articleTitle,
-            articleScore: props.location.articleScore,
-            articleWordCount: props.location.articleWordCount,
-            articleLastUpdated: props.location.articleLastUpdated,
-            domainCounts: {
+            'articleUrl': article['url'],
+            'articleTitle': article['title'],
+            'articleScore': article['wirrScore'],
+            'articleWordCount': article['wordCount'],
+            'articleLastUpdated': article['lastUpdated'],
+            'domainCounts': {
                 'books_text': 0,
                 'edu_gov': 0,
                 'org': 0,
                 'com_net': 0
             }
         }
+
     }
 
     componentDidMount() {
