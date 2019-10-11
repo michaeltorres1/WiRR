@@ -21,7 +21,7 @@ export class ArticleShow extends React.Component {
         this.state = {
             'articleUrl': article['url'],
             'articleTitle': article['title'],
-            'articleScore': article['score'],
+            'articleScore': article['wirrScore'],
             'articleWordCount': article['wordCount'],
             'articleLastUpdated': article['lastUpdated'],
             'domainCounts': {
