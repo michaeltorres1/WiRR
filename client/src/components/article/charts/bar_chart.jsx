@@ -125,8 +125,8 @@ export class BarChart extends Component {
             })
             .attr('y', function (d) {
                 const placementPos = yScale(d.value) + margin - 15
-                if (placementPos > (chartHeight)) {
-                    return chartHeight
+                if (placementPos > (chartHeight + 20)) {
+                    return chartHeight + 30
                 }
                 return placementPos
             })
