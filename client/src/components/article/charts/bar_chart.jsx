@@ -64,6 +64,7 @@ export class BarChart extends Component {
         const margin = 60;
         const chartWidth = 1000 - 2 * margin
         const chartHeight = 600 - 2 * margin
+        console.log('Chart Height' + chartHeight)
 
         const svg = d3.select('#bar_chart_svg')
                       .attr('width', chartWidth + 100)
@@ -98,7 +99,6 @@ export class BarChart extends Component {
                 .tickSize(-chartWidth, 0, 0)
                 .tickFormat(''))
             .attr('transform', `translate(30, ${-20})`)
-            .attr('stroke', 'blue')
             .attr('stroke-width', 1)
             .attr('fill', 'none')
 
@@ -124,7 +124,11 @@ export class BarChart extends Component {
                 return xScale(d.name) + xScale.bandwidth() + 28
             })
             .attr('y', function (d) {
-                return yScale(d.value) + margin - 15
+                const placementPos = yScale(d.value) + margin - 15
+                if (placementPos > (chartHeight)) {
+                    return chartHeight
+                }
+                return placementPos
             })
             .style('fill', 'skyblue')
 
