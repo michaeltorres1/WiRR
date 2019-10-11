@@ -21,17 +21,12 @@ export class DonutGraph extends React.Component {
     }
 
     async componentDidMount() {
-        this.topTenAuthorContributionPercentage(this.props.articleUrl)
+        this.topTenAuthorContributionPercentage()
         this.drawChart()
     }
 
-    topTenAuthorContributionPercentage = (url) => {
-        // 1. Load under the 'url' package for proper parsing
-        const packagedUrl = new URL(url)
-        // 2. Get article name from pathanme by parsing
-        // (already joined by '_' from 'search.jsx')
+    topTenAuthorContributionPercentage = () => {
         const articleName = this.props.articleTitle
-
         // We are going to store top ten authors and their contributions here
         let topTenAuthors = {};
 
@@ -55,6 +50,7 @@ export class DonutGraph extends React.Component {
             this.setState({
                 data: topTenAuthors
             })
+            this.props.extractTop10AuthorsUsernames(Object.keys(this.state.data).slice(0, Object.keys(this.state.data).length - 1))
         })
             .catch(err => {
                 throw err
@@ -62,9 +58,9 @@ export class DonutGraph extends React.Component {
     }
 
     drawChart() {
-        d3.select("#author_contribution_percentage_per_article").html("")
+        d3.select("#donut_graph_div").html("")
         const radius = Math.min(this.state.width, this.state.height) / 2 - this.state.margin
-        let svg = d3.select("#author_contribution_percentage_per_article")
+        let svg = d3.select("#donut_graph_div")
             .append("svg")
             .attr('class', 'article-show-donut-graph')
             .attr("width", this.state.width)
@@ -168,7 +164,7 @@ export class DonutGraph extends React.Component {
         return (
             <div className="donut-graph-container">
                 <p>Top 10 Author Percentage Contribution (+ Others)</p>
-                <div id="author_contribution_percentage_per_article">
+                <div id="donut_graph_div">
                 </div>
             </div>
         )

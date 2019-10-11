@@ -5,3 +5,9 @@
 .donut-graph-container {
     text-align: center;
 }
+
+.grid line {
+    stroke: lightgrey;
+    stroke-opacity: 0.3;
+    shape-rendering: crispEdges;
+}

@@ -1,9 +1,7 @@
 import React from 'react'
 import * as cheerio from 'cheerio';
 import { DonutGraph } from './charts/donut_graph';
-import RadarChart  from './charts/radar';
-import WikiSearchContainer from '../search/search_container';
-
+import { BarChart } from './charts/bar_chart';
 import { 
     visitPage,
     getAllDomains,
@@ -28,10 +26,11 @@ export class ArticleShow extends React.Component {
                 'books_text': 0,
                 'edu_gov': 0,
                 'org': 0,
-                'com_net': 0
-            }
+                'com/net': 0
+            },
+            top10Authors: []
         }
-
+        this.extractTop10AuthorsUsernames = this.extractTop10AuthorsUsernames.bind(this)
     }
 
     componentDidMount() {
@@ -96,6 +95,12 @@ export class ArticleShow extends React.Component {
         })
     }
 
+    extractTop10AuthorsUsernames(top10Authors) {
+        this.setState({
+            top10Authors
+        })
+    }
+
     render() {
         return (
             <div className="article-show-page-container">
@@ -144,8 +149,14 @@ export class ArticleShow extends React.Component {
                         </div> */}
                         <div className="donut-chart">
                             <DonutGraph
+                                extractTop10AuthorsUsernames={this.extractTop10AuthorsUsernames}
                                 articleTitle={this.state.articleTitle}
-                                articleUrl={this.state.articleUrl} />
+                                articleUrl={this.state.articleUrl}
+                            />
+                        </div>
+                        <div>
+                            {this.state.top10Authors.length > 0 ? <BarChart
+                                top10Authors={this.state.top10Authors} /> : null}
                         </div>
                     </div>
                 </div>
