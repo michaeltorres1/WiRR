@@ -1,12 +1,8 @@
-# Group Members and Work Breakdown
-### Michael Torres, Lwin Ye, Hakeem Almidan, Kevin Kaminski
-
-<a href="https://www.mongodb.com/"><img src="https://img.shields.io/badge/Powered%20by-MongoDB-green.svg"/></a>
+# Wikipedia Reliability Rater (WiRR)
+<!-- <a href="https://www.mongodb.com/"><img src="https://img.shields.io/badge/Powered%20by-MongoDB-green.svg"/></a>
 <a href="#"><img src="https://img.shields.io/badge/Powered%20by-JavaScript-orange.svg"/></a>
 <a href="#"><img src="https://img.shields.io/badge/Powered%20by-React/Redux-blue.svg"></a>
-<a href="https://github.com"><img src="https://img.shields.io/badge/Hosted%20on-GitHub-brightgreen.svg"/></a>
-
-# Wikipedia Realiability Rater (WiRR)
+<a href="https://github.com"><img src="https://img.shields.io/badge/Hosted%20on-GitHub-brightgreen.svg"/></a> -->
 
 [WiRR Live](http://www.wikipediarr.com/)
 
@@ -61,8 +57,27 @@ This would then be divided by the maximum total score and multiplied by 100 to g
 4. `npm run dev` to run both server and webpack
 5. Open http://localhost:3000/
 
+## How to use
+1. Go to [WiRR](http://www.wikipediarr.com/)
 
-## Future Implementations/Features
+![](client/src/img/landing_page.png)
+
+2. Search for the article you are interested in
+
+![](client/src/img/search.png)
+
+3. Analyze result and measure how reliable this article is
+
+![](client/src/img/article_show.png)
+  - Things to look at:
+    - Last updated date
+      - Is it new? Is it old?
+    - Citation source distribution
+      - Articles that have a majority of text citations are considered reliable in our measures
+    - Author activity
+      - Is this article mainly written by one author (observe donut chart)? If so, how many lifetime contributions do they have (observe bar chart)?
+      
+## Future Features
   - Ability for user to save favorite articles
   - Integration of author lifetime contributions into reliability score
     - If author with high number of lifetime contributions has written a significant portion of article, then article becomes more reliable.
