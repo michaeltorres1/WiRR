@@ -64,7 +64,6 @@ export class BarChart extends Component {
         const margin = 60;
         const chartWidth = 1000 - 2 * margin
         const chartHeight = 600 - 2 * margin
-        console.log('Chart Height' + chartHeight)
 
         const svg = d3.select('#bar_chart_svg')
                       .attr('width', chartWidth + 100)
@@ -117,6 +116,11 @@ export class BarChart extends Component {
             .enter()
             .append('text')
             .text(function (d) {
+                if (d.value === undefined) {
+                    // if d.value is undefined, this most likely means that user is blacklisted
+                        //  thus we will give them lifetime contribution of 1
+                    d.value = 1;
+                }
                 // Number format source : https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
                 return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             })
