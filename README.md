@@ -47,6 +47,19 @@ This would then be divided by the maximum total score and multiplied by 100 to g
     - Search functionality
     - Get total lifetime contributions of certain authors
 
+## Setup
+1. Create file called `key_dev.js` under `./config` directory
+   - And place code snippet with following format into your file:
+   ```javaScript
+    module.exports = {
+      "mongoURI": "YOUR MONGO URI KEY HERE",
+      "secretOrKey": "YOUR SECRET OR KEY HERE"
+    }
+   ```
+2. `npm install` in root directory to install root dependencies
+3. `npm install` in `./client` to install frontend dependencies
+4. `npm run dev` to run both server and webpack
+5. Open http://localhost:3000/
 
 
 ## Future Implementations/Features
