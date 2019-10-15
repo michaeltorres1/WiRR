@@ -55,13 +55,7 @@ export class ArticleShow extends React.Component {
                         allTextCitationCount += 1
                     }
                 })
-                
-                // format data as needed
 
-                // if it's gov or edu, then pair
-                // if it's org then have it on its own
-                // if net or com or anything else then pair
-                // Go through and format as needed
                 const domainCounts = { 
                     'books_text': 0,
                     'edu_gov': 0,
@@ -104,7 +98,6 @@ export class ArticleShow extends React.Component {
     render() {
         return (
             <div className="article-show-page-container">
-                {/* <WikiSearchContainer /> */}
                 <div className="article-header-container">
                     <div className="article-title">                    
                         {this.state.articleTitle}
