@@ -77,6 +77,15 @@ This would then be divided by the maximum total score and multiplied by 100 to g
     - Author activity
       - Is this article mainly written by one author (observe donut chart)? If so, how many lifetime contributions do they have (observe bar chart)?
       
+## Noticeable Features
+#### Interactive User Auth Errors
+![](client/src/gif/user_auth_error_demo.gif)
+#### Dynamic Search
+![](client/src/gif/search.gif)
+#### D3 Graphs
+![](client/src/gif/charts_demo.gif)
+
+
 ## Future Features
   - Ability for user to save favorite articles
   - Integration of author lifetime contributions into reliability score
