@@ -39,7 +39,7 @@ This would then be divided by the maximum total score and multiplied by 100 to g
 - D3
   - Use: Display data from charts
 #### APIs
-- [Wikimdeia API](https://www.mediawiki.org/wiki/API:Main_page)
+- [Wikimedia API](https://www.mediawiki.org/wiki/API:Main_page)
   - Uses: 
     - Search functionality
     - Get total lifetime contributions of certain authors
