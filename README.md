@@ -8,6 +8,7 @@
 
 ## Background and Overview
 WiRR is an application to help determine the reliability of a given Wikipedia article. The reliability of the article is determined by our custom made reliability index. The reliability index is determined mainly by citations. The citations have the following scoring:
+
   | Domain / Source        | Score         |
   |:-----------------------|:--------------|
   | text/scholarly article | 5             |
