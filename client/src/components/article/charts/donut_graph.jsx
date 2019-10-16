@@ -72,19 +72,16 @@ export class DonutGraph extends React.Component {
             .domain(this.state.data)
             .range(["violet", "indigo", "skyblue", "blue", "green", "lightgreen", "yellow", "orange", "red", "lightred", "lightBlue"])
 
-        let pie = d3.pie()
-            .value(function (d) { return d.value })
+        let pie = d3.pie().value(function (d) { return d.value })
         let data_ready = pie(d3.entries(this.state.data))
 
-        // Add div to body but isn't visible 
-        // this will be the box that appears next to mouse
-        // on hover
+        // Add div to body but isn't visible.
+        // This will be the box that appears next to mouse on hover.
         let div = d3.select("body").append("div")
             .attr("class", "tooltip-donut")
             .style("opacity", 0);
 
-        const path = svg
-            .selectAll('path')
+        svg.selectAll('path')
             .attr('class', 'donut-graph-svg')
             .data(data_ready)
             .enter()
