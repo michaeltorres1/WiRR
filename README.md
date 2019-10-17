@@ -30,8 +30,6 @@ This would then be divided by the maximum total score and multiplied by 100 to g
 #### Noticable Dependencies
 - bcrypjs
   - Use: Hash passwords before they get stored in database
-- uuid
-  - Use: 
 - cheerio
   - Use: Scrape inforamtion from certain web pages
 - Request
