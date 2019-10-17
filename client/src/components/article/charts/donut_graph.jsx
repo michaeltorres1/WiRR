@@ -25,6 +25,16 @@ export class DonutGraph extends React.Component {
         this.drawChart()
     }
 
+    async componentDidUpdate() {
+        this.topTenAuthorContributionPercentage()
+        this.drawChart()
+    }
+
+    async resize() {
+        this.topTenAuthorContributionPercentage()
+        this.drawChart()
+    }
+
     topTenAuthorContributionPercentage = () => {
         const articleName = this.props.articleTitle
         // We are going to store top ten authors and their contributions here
@@ -59,14 +69,14 @@ export class DonutGraph extends React.Component {
 
     drawChart() {
         d3.select("#donut_graph_div").html("")
-        const radius = Math.min(this.state.width, this.state.height) / 2 - this.state.margin
+        const radius = Math.min(window.innerHeight, window.innerWidth) / 2 - this.state.margin
         let svg = d3.select("#donut_graph_div")
             .append("svg")
             .attr('class', 'article-show-donut-graph')
-            .attr("width", this.state.width)
-            .attr("height", this.state.height)
+            .attr("width", window.innerHeight)
+            .attr("height", window.innerWidth)
             .append("g")
-            .attr("transform", "translate(" + this.state.width / 2 + "," + this.state.height / 2 + ")")
+            .attr("transform", "translate(" + window.innerHeight / 2 + "," + window.innerWidth / 2 + ")")
 
         let color = d3.scaleOrdinal()
             .domain(this.state.data)
@@ -94,7 +104,7 @@ export class DonutGraph extends React.Component {
             .attr('stroke', 'ghostwhite')
             .style('stroke-width', '1px')
             .attr('opacity', 1)
-            .attr("transform", "translate(" + -this.state.width / 9 + "," + -this.state.height / 100 + ")")
+            .attr("transform", "translate(" + -window.innerHeight / 9 + "," + -window.innerWidth / 100 + ")")
 
             .on('mouseover', function (d, i) {
                 d3.select(this).transition()
