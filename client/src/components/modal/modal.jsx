@@ -1,4 +1,5 @@
 import React from 'react'
+import { TeamPersonalInfo } from './team_personal_info';
 
 export function Modal({ modal, closeModal }) {
     if (!modal) {
@@ -8,7 +9,7 @@ export function Modal({ modal, closeModal }) {
     let component;
     switch (modal) {
         case 'team personal info':
-            component = null
+            component = <TeamPersonalInfo />
             break;
         default:
             return null;
