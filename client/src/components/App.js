@@ -24,6 +24,7 @@ import '../stylesheets/app.css';
 import '../stylesheets/article_show.css'
 import '../stylesheets/charts.css';
 import '../stylesheets/donut_graph.css';
+import '../stylesheets/modal.css';
 
 
 if (localStorage.token) {
