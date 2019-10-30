@@ -17,6 +17,7 @@ import { ArticleShow } from './article/article_show';
 import store from '../store';
 import { loadUser } from '../actions/auth';
 import setAuthToken from '../utils/setAuthToken';
+import { MultipleUsersIcon } from './SVGs/multiple_users_icon';
 
 // Stylesheets (CSS)
 import '../stylesheets/css_reset.css';
@@ -50,6 +51,7 @@ const App = () => {
               <Redirect to="/" />
             </Switch>
           </section>
+          <MultipleUsersIcon />
         </div>
       </Router>
     </Provider>
