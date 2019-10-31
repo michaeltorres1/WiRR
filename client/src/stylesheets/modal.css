@@ -36,6 +36,10 @@
   opacity: 0.8;
 }
 
+.multiple-users-path {
+  cursor: pointer;
+}
+
 .multiple-users-svg:hover {
   opacity: 1.0;
   border: 1px solid #106674;
@@ -77,7 +81,7 @@
 .team-personal-info-row:hover {
   border-top: 0.5px solid black;
   border-bottom: 0.5px solid black;
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2);
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
 }
