@@ -60,7 +60,8 @@
 }
 
 .personal-account-img-link {
-  width: 30px;
+  width: 4vw;
+  max-width: 30px;
   height: 100%;
   fill: whitesmoke;
 }
@@ -69,7 +70,7 @@
   opacity: 0.7;
 }
 
-.personal-account-img-link.linkedin {
+.personal-account-img-link {
   margin-left: 10px;
 }
 
@@ -87,4 +88,8 @@
   -ms-transform: scale(1.15);
   transform: scale(1.15);
   background-color: var(--primary-color);
+}
+
+.personal-account-name {
+  font-size: calc(12px + 1vw);
 }

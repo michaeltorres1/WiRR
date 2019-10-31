@@ -5,11 +5,14 @@ import { GithubIcon } from '../SVGs/github_icon';
 export function TeamPersonalInfo() {
     return (
         <div className="team-personal-info-modal-container">
+            <div className="modal-created-by-div">
+                Created by:
+            </div>
             <ul style={{ width: '30vw'}}>
                 <li
                     className="team-personal-info-row"
                     key={'team-personal-info-row-1'}>
-                    <div>
+                    <div className="personal-account-name">
                         Michael Torres
                     </div>
                     <div>
@@ -30,8 +33,8 @@ export function TeamPersonalInfo() {
                 </li>
                 <li
                     className="team-personal-info-row"
-                    key={'team-personal-info-row-1'}>
-                    <div>
+                    key={'team-personal-info-row-2'}>
+                    <div className="personal-account-name">
                         Lwin Ye
                     </div>
                     <div>
@@ -52,8 +55,8 @@ export function TeamPersonalInfo() {
                 </li>
                 <li
                     className="team-personal-info-row"
-                    key={'team-personal-info-row-1'}>
-                    <div>
+                    key={'team-personal-info-row-3'}>
+                    <div className="personal-account-name">
                         Kevin Kaminski
                     </div>
                     <div>
@@ -74,8 +77,8 @@ export function TeamPersonalInfo() {
                 </li>
                 <li
                     className="team-personal-info-row"
-                    key={'team-personal-info-row-1'}>
-                    <div>
+                    key={'team-personal-info-row-4'}>
+                    <div className="personal-account-name">
                         Hakeem Almidan
                     </div>
                     <div>
