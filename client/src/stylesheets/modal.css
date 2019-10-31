@@ -62,6 +62,7 @@
 .personal-account-img-link {
   width: 30px;
   height: 100%;
+  fill: whitesmoke;
 }
 
 .personal-account-img-link:hover {
@@ -85,4 +86,5 @@
   -webkit-transform: scale(1.15);
   -ms-transform: scale(1.15);
   transform: scale(1.15);
+  background-color: var(--primary-color);
 }
