@@ -17,6 +17,7 @@ import { ArticleShow } from './article/article_show';
 import store from '../store';
 import { loadUser } from '../actions/auth';
 import setAuthToken from '../utils/setAuthToken';
+import ModalContainer from '../components/modal/modal_container';
 import MultipleUsersIconContainer from './SVGs/multiple_users_icon_container';
 
 // Stylesheets (CSS)
@@ -41,6 +42,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <div className="main">
+          <ModalContainer />
           <Navbar />
           <Route exact path="/" component= { Landing } />
           <section className="container">
