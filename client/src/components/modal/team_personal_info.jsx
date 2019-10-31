@@ -1,4 +1,5 @@
 import React from 'react'
+import { LinkedInIcon } from '../SVGs/linkedIn_icon';
 
 export function TeamPersonalInfo() {
     return (
@@ -24,10 +25,7 @@ export function TeamPersonalInfo() {
                             <a
                                 href="https://www.linkedin.com/in/abdulhakeem-almidan/"
                                 target="_blank">
-                                <img
-                                    className="personal-account-img-link linkedin"
-                                    src="https://image.flaticon.com/icons/svg/25/25320.svg"
-                                    alt="LinkedIn logo" />
+                                <LinkedInIcon />
                             </a>
                         </div>
                     </div>
