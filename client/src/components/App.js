@@ -50,10 +50,10 @@ const App = () => {
               <Route exact path="/register" component={ Register } />
               <Route exact path="/login" component={ Login } />
               <Route exact path="/article/show/:id" component={ArticleShow} />
+              <Route to="/" component={MultipleUsersIconContainer}/>
               <Redirect to="/" />
             </Switch>
           </section>
-          <MultipleUsersIconContainer />
         </div>
       </Router>
     </Provider>
