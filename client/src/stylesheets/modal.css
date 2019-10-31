@@ -14,3 +14,29 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.main {
+  position: relative;
+}
+
+.multiple-users-svg {
+  cursor: pointer;
+  fill: #b4bbc4;
+  background-color: #567fac;
+  border: 1px solid #15a2b8;
+  position: absolute;
+  right: 25px;
+  padding: 10px;
+  border-radius: 50%;
+  height: 10vw;
+  width: 10vw;
+  max-width: 70px;
+  max-height: 70px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.multiple-users-svg:hover {
+  opacity: 1.0;
+  border: 1px solid #106674;
+}

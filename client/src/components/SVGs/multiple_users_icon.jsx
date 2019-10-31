@@ -9,6 +9,7 @@ export const MultipleUsersIcon = () => {
             height="80.13px"
             viewBox="0 0 80.13 80.13"
             xmlspace="preserve"
+            className="multiple-users-svg"
         >
             <g>
                 <path d="M48.355,17.922c3.705,2.323,6.303,6.254,6.776,10.817c1.511,0.706,3.188,1.112,4.966,1.112
