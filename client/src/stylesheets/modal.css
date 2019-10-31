@@ -26,13 +26,13 @@
   border: 1px solid #15a2b8;
   position: absolute;
   right: 25px;
+  bottom: 20px;
   padding: 10px;
   border-radius: 50%;
   height: 10vw;
   width: 10vw;
   max-width: 70px;
   max-height: 70px;
-  margin-bottom: 10px;
   opacity: 0.8;
 }
 
@@ -50,7 +50,7 @@
   padding-left: 50px;
   padding-right: 50px;
   background-color: slategray;
-  border: 1px solid cyan;
+  border: 1px solid var(--primary-color);
   color: whitesmoke;
   border-radius: 4%
 }
