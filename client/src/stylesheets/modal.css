@@ -40,3 +40,44 @@
   opacity: 1.0;
   border: 1px solid #106674;
 }
+
+.team-personal-info-modal-container {
+  padding: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: slategray;
+  border: 1px solid cyan;
+  color: whitesmoke;
+  border-radius: 4%
+}
+
+.personal-account-links {
+  display: flex;
+}
+
+.personal-account-img-link {
+  width: 30px;
+}
+
+.personal-account-img-link:hover {
+  opacity: 0.7;
+}
+
+.personal-account-img-link.linkedin {
+  margin-left: 10px;
+}
+
+.team-personal-info-row {
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+  padding: 10px;
+}
+
+.team-personal-info-row:hover {
+  border-top: 0.5px solid black;
+  border-bottom: 0.5px solid black;
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
