@@ -1,0 +1,95 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main {
+  position: relative;
+}
+
+.multiple-users-svg {
+  cursor: pointer;
+  fill: #b4bbc4;
+  background-color: #567fac;
+  border: 1px solid #15a2b8;
+  position: absolute;
+  right: 25px;
+  bottom: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  height: 10vw;
+  width: 10vw;
+  max-width: 70px;
+  max-height: 70px;
+  opacity: 0.8;
+}
+
+.multiple-users-path {
+  cursor: pointer;
+}
+
+.multiple-users-svg:hover {
+  opacity: 1.0;
+  border: 1px solid #106674;
+}
+
+.team-personal-info-modal-container {
+  padding: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: slategray;
+  border: 1px solid var(--primary-color);
+  color: whitesmoke;
+  border-radius: 4%
+}
+
+.personal-account-links {
+  display: flex;
+}
+
+.personal-account-img-link {
+  width: 4vw;
+  max-width: 30px;
+  height: 100%;
+  fill: whitesmoke;
+}
+
+.personal-account-img-link:hover {
+  opacity: 0.7;
+}
+
+.personal-account-img-link {
+  margin-left: 10px;
+}
+
+.team-personal-info-row {
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+  padding: 10px;
+}
+
+.team-personal-info-row:hover {
+  border-top: 0.5px solid black;
+  border-bottom: 0.5px solid black;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
+  background-color: var(--primary-color);
+}
+
+.personal-account-name {
+  font-size: calc(12px + 1vw);
+}
